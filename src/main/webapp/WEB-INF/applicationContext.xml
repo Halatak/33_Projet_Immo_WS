@@ -29,14 +29,14 @@
 	</bean>
 
 	<!-- Déclaration du bean SessionFactory -->
-	<bean id="sessionFactoryBean"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="myEmf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<!-- Injection du bean datasource via le setter -->
 		<property name="dataSource" ref="dataSourceBean" />
 		<!-- Spécifier les classes annotées par les annotations JPA (classes persistantes) -->
 		<property name="packagesToScan" value="fr.adaming.model" />
 		<!-- Spécifier les propriétés de hibernate -->
-		<property name="hibernateProperties">
+		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">${hb.dialect}</prop>
 				<prop key="hibernate.show_sql">${hb.sql}</prop>
@@ -46,11 +46,14 @@
 	</bean>
 
 	<!-- Déclaration du bean TransactionManager -->
-	<bean id="transactionManagerBean"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<!-- Injection de la sessionFactory via les modificateurs (setters) -->
-		<property name="sessionFactory" ref="sessionFactoryBean"></property>
+		<property name="entityManagerFactory" ref="myEmf"></property>
 	</bean>
+
+	<!-- Pour gerer les exceptions -->
+	<bean id="persistenceExceptionTranslationPostProcessor"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- ACtivation des annotations des transactions: @transactionnal -->
 	<tx:annotation-driven transaction-manager="transactionManagerBean" />
