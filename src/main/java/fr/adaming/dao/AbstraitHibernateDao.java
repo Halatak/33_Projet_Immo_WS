@@ -3,50 +3,45 @@ package fr.adaming.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public abstract class AbstraitHibernateDao<T extends Serializable> implements IGeneriqueDao<T> {
 
 	private Class<T> clazz;
-
-	@Autowired
-	SessionFactory sessionFactory;
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	public final void setClazz(Class<T> clazzToSet) {
 		this.clazz = clazzToSet;
 	}
 
-	protected final Session getCurrentSession() {
-		return sessionFactory.getCurrentSession();
-	}
-
 	// methode getById
 	public T getById(long id) {
-		return (T) getCurrentSession().get(clazz, id);
+		return (T) em.find(clazz, id);
 	}
 
 	public List<T> getAll() {
-		return getCurrentSession().createQuery("FROM " + clazz.getName()).list();
+		return em.createQuery("SELECT FROM " + clazz.getName()).getResultList();
 	}
 
 	public T ajout(T entity) {
 		// creation de la requete
-		getCurrentSession().save(entity);
+		em.persist(entity);
 		return entity;
 
 	}
 
 	public T modifier(T entity) {
 		// creation de la requete
-		getCurrentSession().saveOrUpdate(entity);
+		em.merge(entity);
 		return entity;
 	}
 
 	public void suppr(T entity) {
 		// creation de la requete
-		getCurrentSession().delete(entity);
+		em.remove(entity);
 	}
 
 	public void supprById(long entityId) {
