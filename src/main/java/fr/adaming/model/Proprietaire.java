@@ -38,6 +38,8 @@ public class Proprietaire implements Serializable{
 	@OneToMany(mappedBy="proprietaire") 
 	private List<Contrat> listeContrats; 
 	
+	// IL MANQUE L'ASSO AVEC ROLE 
+	
 	// Constructeurs
 	public Proprietaire() {
 		super();

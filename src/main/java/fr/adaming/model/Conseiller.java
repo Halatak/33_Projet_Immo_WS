@@ -21,6 +21,8 @@ public class Conseiller implements Serializable{
 	private String mail;
 	private String mdp;
 	
+	// IL MANQUE L'ASSO AVEC ROLE 
+	
 	// Constructeurs
 	public Conseiller() {
 		super();

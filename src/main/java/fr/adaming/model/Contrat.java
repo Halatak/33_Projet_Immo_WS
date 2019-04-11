@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,6 +26,15 @@ public class Contrat implements Serializable{
 	private double prixAchat;
 	@Temporal(TemporalType.DATE)
 	private Date dateAchat;
+	
+	//Transformation de l'association UML en JAVA
+	@ManyToOne
+	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
+	private Proprietaire proprietaire; 
+	
+	@ManyToOne
+	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
+	private Client client; 
 	
 	// Constructeurs
 	public Contrat() {

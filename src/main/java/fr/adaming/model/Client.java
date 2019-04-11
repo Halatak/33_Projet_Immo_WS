@@ -1,6 +1,7 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +29,11 @@ public class Client implements Serializable{
 	//Transformation de l'association UML en JAVA
 	@Embedded
 	private Adresse adresse; 
+	
+	@OneToMany(mappedBy="client") 
+	private List<Contrat> listeContrats; 
+	
+	// IL MANQUE L'ASSO AVEC ROLE ET CLASSE STANDARD
 	
 	// Constructeurs
 	public Client() {
