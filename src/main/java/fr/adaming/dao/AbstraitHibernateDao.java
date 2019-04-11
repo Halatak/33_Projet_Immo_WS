@@ -23,7 +23,7 @@ public abstract class AbstraitHibernateDao<T extends Serializable> implements IG
 	}
 
 	public List<T> getAll() {
-		return em.createQuery("SELECT FROM " + clazz.getName()).getResultList();
+		return em.createQuery("SELECT t FROM " + clazz.getName()+" t").getResultList();
 	}
 
 	public T ajout(T entity) {
