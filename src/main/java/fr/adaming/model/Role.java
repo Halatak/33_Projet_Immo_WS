@@ -25,6 +25,9 @@ public class Role implements Serializable{
 	@OneToMany(mappedBy="role")
 	private List<Conseiller> listeConseiller;
 	
+	@OneToMany(mappedBy="role")
+	private List<Client> listeClient;
+	
 	// Constructeurs
 	public Role() {
 		super();
