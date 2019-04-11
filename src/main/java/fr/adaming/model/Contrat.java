@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="contrats")
-public class Contrat {
+public class Contrat implements Serializable{
 	
 	// Attributs
 	@Id
