@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +22,10 @@ public class Conseiller implements Serializable{
 	private int id;
 	private String mail;
 	private String mdp;
+	
+	@ManyToOne
+	@JoinColumn(name="roles_id",referencedColumnName="id_roles")
+	private Role role;
 	
 	// IL MANQUE L'ASSO AVEC ROLE 
 	

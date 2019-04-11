@@ -9,13 +9,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="clients")
 public class Client implements Serializable{
-	
+	private static final long serialVersionUID = 1L;
 	// Déclaration des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +35,10 @@ public class Client implements Serializable{
 	
 	@OneToMany(mappedBy="client") 
 	private List<Contrat> listeContrats; 
+	
+	@ManyToMany
+	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="classe_id"))
+	private List<ClasseStandard> listeClasseStandard;
 	
 	// IL MANQUE L'ASSO AVEC ROLE ET CLASSE STANDARD
 	

@@ -8,13 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="classes")
 public class ClasseStandard implements Serializable{
-	
+	private static final long serialVersionUID = 1L;
 	// Attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +31,10 @@ public class ClasseStandard implements Serializable{
 	//Transformation de l'association UML en JAVA
 	@OneToMany(mappedBy="classeStandard") 
 	private List<BienImmobilier> listeBiensImmo;
+	
+	@ManyToMany
+	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="classe_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
+	private List<Client> client;
 	
 	// Constructeurs
 	public ClasseStandard() {
