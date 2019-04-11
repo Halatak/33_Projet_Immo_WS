@@ -125,6 +125,31 @@ public class Client implements Serializable{
 	public void setListeContrats(List<Contrat> listeContrats) {
 		this.listeContrats = listeContrats;
 	}
+	
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	public List<ClasseStandard> getListeClasseStandard() {
+		return listeClasseStandard;
+	}
+
+	public void setListeClasseStandard(List<ClasseStandard> listeClasseStandard) {
+		this.listeClasseStandard = listeClasseStandard;
+	}
+
+	public List<BienImmobilier> getListeBienImmobilier() {
+		return listeBienImmobilier;
+	}
+
+	public void setListeBienImmobilier(List<BienImmobilier> listeBienImmobilier) {
+		this.listeBienImmobilier = listeBienImmobilier;
+	}
 
 	// To String
 	@Override
