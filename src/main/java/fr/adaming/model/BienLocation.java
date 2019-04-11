@@ -1,7 +1,13 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@DiscriminatorValue(value = "Location")
+@Entity
 public class BienLocation extends BienImmobilier implements Serializable{
 
 	// Attributs
@@ -16,8 +22,19 @@ public class BienLocation extends BienImmobilier implements Serializable{
 		super();
 	}
 
-	public BienLocation(double caution, double loyerMensuel, String typeBail, boolean garniture) {
-		super();
+	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, ClasseStandard classeStandard, double caution, double loyerMensuel,
+			String typeBail, boolean garniture) {
+		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, classeStandard);
+		this.caution = caution;
+		this.loyerMensuel = loyerMensuel;
+		this.typeBail = typeBail;
+		this.garniture = garniture;
+	}
+
+	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, double caution, double loyerMensuel, String typeBail, boolean garniture) {
+		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
@@ -57,10 +74,15 @@ public class BienLocation extends BienImmobilier implements Serializable{
 		this.garniture = garniture;
 	}
 
+	// To String
 	@Override
 	public String toString() {
 		return "BienLocation [caution=" + caution + ", loyerMensuel=" + loyerMensuel + ", typeBail=" + typeBail
-				+ ", garniture=" + garniture + "]";
+				+ ", garniture=" + garniture + ", id=" + id + ", statut=" + statut + ", dateSoumission="
+				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite
+				+ ", coordonneePersAgence=" + coordonneePersAgence + "]";
 	}
+
+
 
 }

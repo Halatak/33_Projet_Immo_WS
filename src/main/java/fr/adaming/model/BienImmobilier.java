@@ -4,18 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "typeBien")
 @Table(name="biensImmo")
 public class BienImmobilier implements Serializable{
 
@@ -23,25 +27,41 @@ public class BienImmobilier implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bimmo")
-	private int id;
-	private String statut;
+	protected int id;
+	protected String statut;
 	@Temporal(TemporalType.DATE)
-	private Date dateSoumission;
+	protected Date dateSoumission;
 	@Temporal(TemporalType.DATE)
-	private Date dateDispo;
-	private double revenu;
+	protected Date dateDispo;
+	protected double revenu;
 	@Temporal(TemporalType.DATE)
-	private Date dateVisite;
-	private String coordonneePersAgence;
+	protected Date dateVisite;
+	protected String coordonneePersAgence;
 	
 	//Transformation de l'association UML en JAVA
 	@ManyToOne
 	@JoinColumn(name = "classe_id", referencedColumnName = "id_classe")
 	private ClasseStandard classeStandard;
+	
+	@ManyToOne
+	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
+	private Proprietaire proprietaire;
 
 	// Constructeurs
 	public BienImmobilier() {
 		super();
+	}
+
+	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, ClasseStandard classeStandard) {
+		super();
+		this.statut = statut;
+		this.dateSoumission = dateSoumission;
+		this.dateDispo = dateDispo;
+		this.revenu = revenu;
+		this.dateVisite = dateVisite;
+		this.coordonneePersAgence = coordonneePersAgence;
+		this.classeStandard = classeStandard;
 	}
 
 	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
@@ -112,6 +132,25 @@ public class BienImmobilier implements Serializable{
 	public void setCoordonneePersAgence(String coordonneePersAgence) {
 		this.coordonneePersAgence = coordonneePersAgence;
 	}
+
+	public ClasseStandard getClasseStandard() {
+		return classeStandard;
+	}
+
+	public void setClasseStandard(ClasseStandard classeStandard) {
+		this.classeStandard = classeStandard;
+	}
+	
+
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+	
+	// To String
 
 	@Override
 	public String toString() {

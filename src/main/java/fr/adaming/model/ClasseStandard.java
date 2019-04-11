@@ -81,6 +81,13 @@ public class ClasseStandard implements Serializable{
 		this.superficieMin = superficieMin;
 	}
 	
+	
+	public List<BienImmobilier> getListeBiensImmo() {
+		return listeBiensImmo;
+	}
+	public void setListeBiensImmo(List<BienImmobilier> listeBiensImmo) {
+		this.listeBiensImmo = listeBiensImmo;
+	}
 	// To String
 	@Override
 	public String toString() {

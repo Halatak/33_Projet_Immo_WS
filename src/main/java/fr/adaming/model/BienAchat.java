@@ -1,7 +1,13 @@
 package fr.adaming.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@DiscriminatorValue(value = "Achat")
+@Entity
 public class BienAchat extends BienImmobilier implements Serializable{
 
 	// Attributs
@@ -13,8 +19,16 @@ public class BienAchat extends BienImmobilier implements Serializable{
 		super();
 	}
 
-	public BienAchat(double prix, String etat) {
-		super();
+	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, ClasseStandard classeStandard, double prix, String etat) {
+		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, classeStandard);
+		this.prix = prix;
+		this.etat = etat;
+	}
+
+	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, double prix, String etat) {
+		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence);
 		this.prix = prix;
 		this.etat = etat;
 	}
@@ -36,9 +50,14 @@ public class BienAchat extends BienImmobilier implements Serializable{
 		this.etat = etat;
 	}
 
+	
+	// To String
 	@Override
 	public String toString() {
-		return "BienAchat [prix=" + prix + ", etat=" + etat + "]";
+		return "BienAchat [prix=" + prix + ", etat=" + etat + ", id=" + id + ", statut=" + statut + ", dateSoumission="
+				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite
+				+ ", coordonneePersAgence=" + coordonneePersAgence + "]";
 	}
+
 
 }

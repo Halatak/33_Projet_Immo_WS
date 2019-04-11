@@ -100,6 +100,16 @@ public class Client implements Serializable{
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
+
+
+	public List<Contrat> getListeContrats() {
+		return listeContrats;
+	}
+
+	public void setListeContrats(List<Contrat> listeContrats) {
+		this.listeContrats = listeContrats;
+	}
 
 	// To String
 	@Override

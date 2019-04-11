@@ -72,6 +72,19 @@ public class Contrat implements Serializable{
 		this.dateAchat = dateAchat;
 	}
 	
+	
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 	// To String
 	@Override
 	public String toString() {

@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -109,11 +108,18 @@ public class Proprietaire implements Serializable{
 		this.adresse = adresse;
 	}
 	
+
 	public List<BienImmobilier> getListeBiensImmo() {
-		return ListeBiensImmo;
+		return listeBiensImmo;
 	}
 	public void setListeBiensImmo(List<BienImmobilier> listeBiensImmo) {
-		ListeBiensImmo = listeBiensImmo;
+		this.listeBiensImmo = listeBiensImmo;
+	}
+	public List<Contrat> getListeContrats() {
+		return listeContrats;
+	}
+	public void setListeContrats(List<Contrat> listeContrats) {
+		this.listeContrats = listeContrats;
 	}
 	// To String
 	@Override
