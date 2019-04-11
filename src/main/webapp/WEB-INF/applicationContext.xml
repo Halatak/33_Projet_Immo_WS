@@ -35,6 +35,9 @@
 		<property name="dataSource" ref="dataSourceBean" />
 		<!-- Spécifier les classes annotées par les annotations JPA (classes persistantes) -->
 		<property name="packagesToScan" value="fr.adaming.model" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
 		<!-- Spécifier les propriétés de hibernate -->
 		<property name="jpaProperties">
 			<props>
