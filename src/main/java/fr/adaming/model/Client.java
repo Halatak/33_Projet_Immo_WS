@@ -44,6 +44,10 @@ public class Client implements Serializable{
 	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="classe_id"))
 	private List<ClasseStandard> listeClasseStandard;
 	
+	@ManyToMany
+	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="bimmo_id"))
+	private List<BienImmobilier> listeBienImmobilier;
+	
 	// IL MANQUE L'ASSO AVEC ROLE ET CLASSE STANDARD
 	
 	// Constructeurs

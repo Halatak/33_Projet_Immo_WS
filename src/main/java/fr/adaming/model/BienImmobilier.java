@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,6 +38,8 @@ public class BienImmobilier implements Serializable{
 	@Temporal(TemporalType.DATE)
 	protected Date dateVisite;
 	protected String coordonneePersAgence;
+	protected int nombreChambres;
+	protected String photo;
 	
 	//Transformation de l'association UML en JAVA
 	@ManyToOne
@@ -44,6 +49,10 @@ public class BienImmobilier implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
 	private Proprietaire proprietaire;
+	
+	@ManyToMany
+	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="bimmo_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
+	private List<Client> listeClient;
 
 	// Constructeurs
 	public BienImmobilier() {
@@ -51,7 +60,7 @@ public class BienImmobilier implements Serializable{
 	}
 
 	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, ClasseStandard classeStandard) {
+			String coordonneePersAgence, int nombreChambres, String photo) {
 		super();
 		this.statut = statut;
 		this.dateSoumission = dateSoumission;
@@ -59,11 +68,12 @@ public class BienImmobilier implements Serializable{
 		this.revenu = revenu;
 		this.dateVisite = dateVisite;
 		this.coordonneePersAgence = coordonneePersAgence;
-		this.classeStandard = classeStandard;
+		this.nombreChambres = nombreChambres;
+		this.photo = photo;
 	}
 
 	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence) {
+			String coordonneePersAgence, int nombreChambres, String photo) {
 		super();
 		this.id = id;
 		this.statut = statut;
@@ -72,6 +82,8 @@ public class BienImmobilier implements Serializable{
 		this.revenu = revenu;
 		this.dateVisite = dateVisite;
 		this.coordonneePersAgence = coordonneePersAgence;
+		this.nombreChambres = nombreChambres;
+		this.photo = photo;
 	}
 
 	// Getters & setters
@@ -148,13 +160,41 @@ public class BienImmobilier implements Serializable{
 		this.proprietaire = proprietaire;
 	}
 	
-	// To String
 
+	public int getNombreChambres() {
+		return nombreChambres;
+	}
+
+	public void setNombreChambres(int nombreChambres) {
+		this.nombreChambres = nombreChambres;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public List<Client> getListeClient() {
+		return listeClient;
+	}
+
+	public void setListeClient(List<Client> listeClient) {
+		this.listeClient = listeClient;
+	}
+	
+	
+	// To String
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
 				+ dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite + ", coordonneePersAgence="
-				+ coordonneePersAgence + "]";
+				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
 	}
+	
+	
+
 
 }

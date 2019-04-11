@@ -29,11 +29,11 @@ public class ClasseStandard implements Serializable{
 	
 	//Transformation de l'association UML en JAVA
 	@OneToMany(mappedBy="classeStandard") 
-	private List<BienImmobilier> listeBiensImmo;
+	private List<BienImmobilier> listeBienImmobilier;
 	
 	@ManyToMany
 	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="classe_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
-	private List<Client> client;
+	private List<Client> listeClient;
 	
 	// Constructeurs
 	public ClasseStandard() {

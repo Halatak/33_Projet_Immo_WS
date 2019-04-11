@@ -19,16 +19,16 @@ public class BienAchat extends BienImmobilier implements Serializable{
 		super();
 	}
 
-	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, ClasseStandard classeStandard, double prix, String etat) {
-		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, classeStandard);
+	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, int nombreChambres, String photo, double prix, String etat) {
+		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
 		this.prix = prix;
 		this.etat = etat;
 	}
 
-	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, double prix, String etat) {
-		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence);
+	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, int nombreChambres, String photo, double prix, String etat) {
+		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
 		this.prix = prix;
 		this.etat = etat;
 	}
@@ -52,12 +52,19 @@ public class BienAchat extends BienImmobilier implements Serializable{
 
 	
 	// To String
+
 	@Override
 	public String toString() {
 		return "BienAchat [prix=" + prix + ", etat=" + etat + ", id=" + id + ", statut=" + statut + ", dateSoumission="
 				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite
-				+ ", coordonneePersAgence=" + coordonneePersAgence + "]";
+				+ ", coordonneePersAgence=" + coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo="
+				+ photo + "]";
 	}
+
+
+
+	
+
 
 
 }

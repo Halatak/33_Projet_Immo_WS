@@ -22,19 +22,19 @@ public class BienLocation extends BienImmobilier implements Serializable{
 		super();
 	}
 
-	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, ClasseStandard classeStandard, double caution, double loyerMensuel,
+	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, int nombreChambres, String photo, double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
-		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, classeStandard);
+		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
 	}
-
-	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, double caution, double loyerMensuel, String typeBail, boolean garniture) {
-		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence);
+	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+			String coordonneePersAgence, int nombreChambres, String photo, double caution, double loyerMensuel,
+			String typeBail, boolean garniture) {
+		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
@@ -75,13 +75,16 @@ public class BienLocation extends BienImmobilier implements Serializable{
 	}
 
 	// To String
+
 	@Override
 	public String toString() {
 		return "BienLocation [caution=" + caution + ", loyerMensuel=" + loyerMensuel + ", typeBail=" + typeBail
 				+ ", garniture=" + garniture + ", id=" + id + ", statut=" + statut + ", dateSoumission="
 				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite
-				+ ", coordonneePersAgence=" + coordonneePersAgence + "]";
+				+ ", coordonneePersAgence=" + coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo="
+				+ photo + "]";
 	}
+
 
 
 
