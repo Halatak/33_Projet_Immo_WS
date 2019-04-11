@@ -1,13 +1,30 @@
 package fr.adaming.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="clients")
 public class Client {
 	
 	// Déclaration des attributs
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cl")
 	private int id;
 	private String nom;
 	private String mail;
 	private String mdp;
 	private String telephone; 
+	
+	//Transformation de l'association UML en JAVA
+	@Embedded
+	private Adresse adresse; 
 	
 	// Constructeurs
 	public Client() {
