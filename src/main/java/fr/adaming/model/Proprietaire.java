@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="proprietaires")
 public class Proprietaire implements Serializable{
 	
 	// Déclaration des attributs

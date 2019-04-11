@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="conseillers")
 public class Conseiller implements Serializable{
 	
 	// Attributs 

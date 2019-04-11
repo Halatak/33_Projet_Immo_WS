@@ -17,7 +17,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="clients")
 public class Client implements Serializable{
 	private static final long serialVersionUID = 1L;
 	// Déclaration des attributs

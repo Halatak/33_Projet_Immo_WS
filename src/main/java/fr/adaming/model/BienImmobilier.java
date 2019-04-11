@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "typeBien")
-
 public class BienImmobilier implements Serializable{
 
 	// Attributs

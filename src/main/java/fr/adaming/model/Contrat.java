@@ -15,7 +15,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="contrats")
 public class Contrat implements Serializable{
 	
 	// Attributs
