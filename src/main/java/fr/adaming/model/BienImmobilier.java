@@ -3,12 +3,26 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+@Entity
+@Table(name="biensImmo")
 public class BienImmobilier implements Serializable{
 
 	// Attributs
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_bimmo")
 	private int id;
 	private String statut;
 	@Temporal(TemporalType.DATE)
@@ -19,6 +33,11 @@ public class BienImmobilier implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateVisite;
 	private String coordonneePersAgence;
+	
+	//Transformation de l'association UML en JAVA
+	@ManyToOne
+	@JoinColumn(name = "classe_id", referencedColumnName = "id_classe")
+	private ClasseStandard classeStandard;
 
 	// Constructeurs
 	public BienImmobilier() {
