@@ -1,6 +1,8 @@
 package fr.adaming.model;
 
-public class BienLocation extends BienImmobilier {
+import java.io.Serializable;
+
+public class BienLocation extends BienImmobilier implements Serializable{
 
 	// Attributs
 	private double caution;

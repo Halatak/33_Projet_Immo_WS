@@ -1,6 +1,8 @@
 package fr.adaming.model;
 
-public class ClasseStandard {
+import java.io.Serializable;
+
+public class ClasseStandard implements Serializable{
 	
 	// Attributs
 	private int id; //correspond au code de Classe

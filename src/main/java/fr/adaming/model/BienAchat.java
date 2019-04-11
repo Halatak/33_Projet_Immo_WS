@@ -1,6 +1,8 @@
 package fr.adaming.model;
 
-public class BienAchat extends BienImmobilier {
+import java.io.Serializable;
+
+public class BienAchat extends BienImmobilier implements Serializable{
 
 	// Attributs
 	private double prix;

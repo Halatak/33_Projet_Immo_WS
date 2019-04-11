@@ -1,12 +1,14 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Embeddable;
 
 @Embeddable
 @Access(AccessType.FIELD)
-public class Adresse {
+public class Adresse implements Serializable{
 
 	// Attributs
 	private String rue;

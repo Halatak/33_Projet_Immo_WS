@@ -1,8 +1,26 @@
 package fr.adaming.model;
 
-public class Proprietaire {
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="proprietaires")
+public class Proprietaire implements Serializable{
 	
 	// Déclaration des attributs
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pr")
 	private int id;
 	private String nom;
 	private String mail;
@@ -10,19 +28,32 @@ public class Proprietaire {
 	private String telephonePro;
 	private String telephonePrive;
 	
+	//Transformation de l'association UML en JAVA
+	@Embedded
+	private Adresse adresse; 
+	
+	@OneToMany(mappedBy="proprietaire") 
+	private List<BienImmobilier> listeBiensImmo;
+	
+	@OneToMany(mappedBy="proprietaire") 
+	private List<Contrat> listeContrats; 
+	
 	// Constructeurs
 	public Proprietaire() {
 		super();
 	}
-	public Proprietaire(String nom, String mail, String mdp, String telephonePro, String telephonePrive) {
+	public Proprietaire(String nom, String mail, String mdp, String telephonePro, String telephonePrive,
+			Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.mail = mail;
 		this.mdp = mdp;
 		this.telephonePro = telephonePro;
 		this.telephonePrive = telephonePrive;
+		this.adresse = adresse;
 	}
-	public Proprietaire(int id, String nom, String mail, String mdp, String telephonePro, String telephonePrive) {
+	public Proprietaire(int id, String nom, String mail, String mdp, String telephonePro, String telephonePrive,
+			Adresse adresse) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -30,8 +61,8 @@ public class Proprietaire {
 		this.mdp = mdp;
 		this.telephonePro = telephonePro;
 		this.telephonePrive = telephonePrive;
+		this.adresse = adresse;
 	}
-	
 	// Getters & Setters
 	public int getId() {
 		return id;
@@ -69,13 +100,27 @@ public class Proprietaire {
 	public void setTelephonePrive(String telephonePrive) {
 		this.telephonePrive = telephonePrive;
 	}
+	public Adresse getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 	
+	public List<BienImmobilier> getListeBiensImmo() {
+		return ListeBiensImmo;
+	}
+	public void setListeBiensImmo(List<BienImmobilier> listeBiensImmo) {
+		ListeBiensImmo = listeBiensImmo;
+	}
 	// To String
 	@Override
 	public String toString() {
 		return "Proprietaire [id=" + id + ", nom=" + nom + ", mail=" + mail + ", mdp=" + mdp + ", telephonePro="
-				+ telephonePro + ", telephonePrive=" + telephonePrive + "]";
+				+ telephonePro + ", telephonePrive=" + telephonePrive + ", adresse=" + adresse + "]";
 	}
+	
+
 	
 	
 	

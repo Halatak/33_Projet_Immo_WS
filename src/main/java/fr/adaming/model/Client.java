@@ -1,5 +1,7 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="clients")
-public class Client {
+public class Client implements Serializable{
 	
 	// Déclaration des attributs
 	@Id
@@ -30,22 +32,24 @@ public class Client {
 	public Client() {
 		super();
 	}
-	
-	public Client(String nom, String mail, String mdp, String telephone) {
+
+	public Client(String nom, String mail, String mdp, String telephone, Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.mail = mail;
 		this.mdp = mdp;
 		this.telephone = telephone;
+		this.adresse = adresse;
 	}
 
-	public Client(int id, String nom, String mail, String mdp, String telephone) {
+	public Client(int id, String nom, String mail, String mdp, String telephone, Adresse adresse) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.mail = mail;
 		this.mdp = mdp;
 		this.telephone = telephone;
+		this.adresse = adresse;
 	}
 
 	// Getters & Setters
@@ -82,12 +86,22 @@ public class Client {
 		this.telephone = telephone;
 	}
 
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
 	// To String
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", mail=" + mail + ", mdp=" + mdp + ", telephone=" + telephone
-				+ "]";
+				+ ", adresse=" + adresse + "]";
 	}
+
+
 
 
 
