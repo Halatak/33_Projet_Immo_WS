@@ -2,14 +2,20 @@ package fr.adaming.model;
 
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 public class BienImmobilier {
 
 	// Attributs
 	private int id;
 	private String statut;
+	@Temporal(TemporalType.DATE)
 	private Date dateSoumission;
+	@Temporal(TemporalType.DATE)
 	private Date dateDispo;
 	private double revenu;
+	@Temporal(TemporalType.DATE)
 	private Date dateVisite;
 	private String coordonneePersAgence;
 
