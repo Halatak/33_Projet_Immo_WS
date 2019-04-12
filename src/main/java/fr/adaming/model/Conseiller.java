@@ -14,6 +14,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -32,6 +35,7 @@ public class Conseiller implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="roles_id",referencedColumnName="id_roles")
 	@JsonIgnoreProperties("listeConseiller")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Role role;
 	
 	@OneToOne(mappedBy="conseiller")

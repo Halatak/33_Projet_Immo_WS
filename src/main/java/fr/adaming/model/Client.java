@@ -21,12 +21,16 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Client implements Serializable{
+public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// Déclaration des attributs
 	@Id
@@ -36,37 +40,41 @@ public class Client implements Serializable{
 	private String nom;
 	private String mail;
 	private String mdp;
-	private String telephone; 
-	
-	//Transformation de l'association UML en JAVA
+	private String telephone;
+
+	// Transformation de l'association UML en JAVA
 	@Embedded
-	private Adresse adresse; 
-	
-	@OneToMany(mappedBy="client") 
-	@JsonIgnoreProperties("client")
-	private List<Contrat> listeContrats; 
-	
+	private Adresse adresse;
+
 	@ManyToOne
-	@JoinColumn(name="roles_id",referencedColumnName="id_roles")
+	@JoinColumn(name = "roles_id", referencedColumnName = "id_roles")
 	@JsonIgnoreProperties("listeClient")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Role role;
-	
-	@ManyToMany(mappedBy="listeClient")
-	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="classe_id"))
+
+	@OneToMany(mappedBy = "client")
+	@JsonIgnoreProperties("client")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Contrat> listeContrats;
+
+	@ManyToMany(mappedBy = "listeClient",targetEntity = ClasseStandard.class)
 	@JsonIgnoreProperties("listeClient")
+	//@JsonBackReference
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<ClasseStandard> listeClasseStandard;
-	
-	@ManyToMany
-	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="bimmo_id"))
-	@JsonIgnoreProperties("listeClient")
+
+	@ManyToMany(mappedBy = "listeClient",targetEntity=BienImmobilier.class)
+	//@JsonIgnoreProperties("listeClient")
+	@JsonBackReference
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<BienImmobilier> listeBienImmobilier;
-	
-	@OneToOne(mappedBy="client")
+
+	@OneToOne(mappedBy = "client")
 	@JsonIgnoreProperties("client")
 	private Visite visite;
-	
+
 	// IL MANQUE L'ASSO AVEC ROLE ET CLASSE STANDARD
-	
+
 	// Constructeurs
 	public Client() {
 		super();
@@ -92,31 +100,47 @@ public class Client implements Serializable{
 	}
 
 	// Getters & Setters
+
 	public int getId() {
 		return id;
 	}
+
+	public Visite getVisite() {
+		return visite;
+	}
+
+	public void setVisite(Visite visite) {
+		this.visite = visite;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNom() {
 		return nom;
 	}
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 	public String getMail() {
 		return mail;
 	}
+
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
 	public String getMdp() {
 		return mdp;
 	}
+
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
-	
+
 	public String getTelephone() {
 		return telephone;
 	}
@@ -132,8 +156,6 @@ public class Client implements Serializable{
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	
-
 
 	public List<Contrat> getListeContrats() {
 		return listeContrats;
@@ -142,7 +164,6 @@ public class Client implements Serializable{
 	public void setListeContrats(List<Contrat> listeContrats) {
 		this.listeContrats = listeContrats;
 	}
-	
 
 	public Role getRole() {
 		return role;
@@ -174,13 +195,5 @@ public class Client implements Serializable{
 		return "Client [id=" + id + ", nom=" + nom + ", mail=" + mail + ", mdp=" + mdp + ", telephone=" + telephone
 				+ ", adresse=" + adresse + "]";
 	}
-
-
-
-
-
-	
-	
-	
 
 }

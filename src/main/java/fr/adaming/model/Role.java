@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -30,10 +34,12 @@ public class Role implements Serializable{
 	
 	@OneToMany(mappedBy="role")
 	@JsonIgnoreProperties("role")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Conseiller> listeConseiller;
 	
 	@OneToMany(mappedBy="role")
 	@JsonIgnoreProperties("role")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Client> listeClient;
 	
 	// Constructeurs

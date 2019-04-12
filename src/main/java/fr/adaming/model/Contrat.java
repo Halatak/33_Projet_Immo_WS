@@ -16,6 +16,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -36,11 +39,13 @@ public class Contrat implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
 	@JsonIgnoreProperties("listeContrats")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Proprietaire proprietaire; 
 	
 	@ManyToOne
 	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
 	@JsonIgnoreProperties("listeContrats")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Client client; 
 	
 	// Constructeurs

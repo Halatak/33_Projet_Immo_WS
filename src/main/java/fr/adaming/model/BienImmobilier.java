@@ -23,14 +23,18 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "typeBien")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BienImmobilier implements Serializable{
+public class BienImmobilier implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// Attributs
 	@Id
@@ -46,24 +50,28 @@ public class BienImmobilier implements Serializable{
 	protected String coordonneePersAgence;
 	protected int nombreChambres;
 	protected String photo;
-	
-	//Transformation de l'association UML en JAVA
+
+	// Transformation de l'association UML en JAVA
 	@ManyToOne
 	@JoinColumn(name = "classe_id", referencedColumnName = "id_classe")
 	@JsonIgnoreProperties("listeBienImmobilier")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private ClasseStandard classeStandard;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
 	@JsonIgnoreProperties("listeBiensImmo")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private Proprietaire proprietaire;
-	
-	@ManyToMany
-	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="bimmo_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
-	@JsonIgnoreProperties("listeBienImmobilier")
+
+	@ManyToMany(targetEntity = Client.class)
+	@JoinTable(name = "tab_assoc2", joinColumns = @JoinColumn(name = "bimmo_id"), inverseJoinColumns = @JoinColumn(name = "cl_id"))
+	// @JsonIgnoreProperties("listeBienImmobilier")
+	@JsonManagedReference
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Client> listeClient;
-	
-	@OneToOne(mappedBy="bienImmobilier")
+
+	@OneToOne(mappedBy = "bienImmobilier")
 	@JsonIgnoreProperties("bienImmobilier")
 	private Visite visite;
 
@@ -138,7 +146,6 @@ public class BienImmobilier implements Serializable{
 		this.revenu = revenu;
 	}
 
-
 	public String getCoordonneePersAgence() {
 		return coordonneePersAgence;
 	}
@@ -154,7 +161,6 @@ public class BienImmobilier implements Serializable{
 	public void setClasseStandard(ClasseStandard classeStandard) {
 		this.classeStandard = classeStandard;
 	}
-	
 
 	public Proprietaire getProprietaire() {
 		return proprietaire;
@@ -163,7 +169,6 @@ public class BienImmobilier implements Serializable{
 	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}
-	
 
 	public int getNombreChambres() {
 		return nombreChambres;
@@ -188,17 +193,13 @@ public class BienImmobilier implements Serializable{
 	public void setListeClient(List<Client> listeClient) {
 		this.listeClient = listeClient;
 	}
-	
-	
+
 	// To String
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
-				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
-				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
+				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence=" + coordonneePersAgence
+				+ ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
 	}
-	
-	
-
 
 }

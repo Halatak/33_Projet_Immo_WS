@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -14,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,10 +43,12 @@ public class Proprietaire implements Serializable{
 	
 	@OneToMany(mappedBy="proprietaire") 
 	@JsonIgnoreProperties("proprietaire")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<BienImmobilier> listeBiensImmo;
 	
 	@OneToMany(mappedBy="proprietaire") 
 	@JsonIgnoreProperties("proprietaire")
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Contrat> listeContrats; 
 	
 	// IL MANQUE L'ASSO AVEC ROLE 
