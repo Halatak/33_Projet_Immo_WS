@@ -2,14 +2,18 @@ package fr.adaming.daoTest;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.adaming.dao.IGeneriqueDao;
+import fr.adaming.dao.IBienImmobilierDao;
+import fr.adaming.model.BienAchat;
 import fr.adaming.model.BienImmobilier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,11 +22,11 @@ import fr.adaming.model.BienImmobilier;
 public class BienImmobilierDaoTest {
 
 	// TRanformation de l'association UML en JAVA
-	private IGeneriqueDao<BienImmobilier> bImmoDao;
+	private IBienImmobilierDao bImmoDao;
 
 	// setters
 	@Autowired
-	public void setbImmoDao(IGeneriqueDao<BienImmobilier> bImmoDao) {
+	public void setbImmoDao(IBienImmobilierDao  bImmoDao) {
 		this.bImmoDao = bImmoDao;
 		bImmoDao.setClazz(BienImmobilier.class);
 	}
@@ -41,5 +45,21 @@ public class BienImmobilierDaoTest {
 
 	}
 	
+	// Vérifier l'ajout d'un bienImmobilier à vendre (achat) dans la BdD
+	@Test
+	@Transactional
+	@Rollback(true)
+	public void testAddBienImmoAchat() {
+		
+		BienAchat bAchat = new BienAchat("ok", new Date(), new Date(), 500, new Date(), "Titi", 2, "photo", 10, "ok");
+
+		// récupérer la taille de la liste
+		int tailleReelle = 2;
+		
+		bImmoDao.ajout(bAchat);
+
+		assertEquals(tailleReelle + 1, bImmoDao.getAll().size());
+		
+	}
 	
 }
