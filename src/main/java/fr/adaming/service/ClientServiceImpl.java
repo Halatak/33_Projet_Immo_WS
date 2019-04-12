@@ -24,7 +24,7 @@ public class ClientServiceImpl implements IClientService{
 	}
 
 	@Override
-	public Client getById(long id) {
+	public Client getById(int id) {
 		return clDao.getById(id);
 	}
 
@@ -49,7 +49,7 @@ public class ClientServiceImpl implements IClientService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		clDao.supprById(id);		
 	}
 

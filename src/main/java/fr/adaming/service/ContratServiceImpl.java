@@ -24,7 +24,7 @@ public class ContratServiceImpl implements IContratService{
 	}
 
 	@Override
-	public Contrat getById(long id) {
+	public Contrat getById(int id) {
 		return contDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class ContratServiceImpl implements IContratService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		contDao.supprById(id);		
 	}
 

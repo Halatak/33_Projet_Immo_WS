@@ -24,7 +24,7 @@ public class ConseillerServiceImpl implements IConseillerService {
 	}
 
 	@Override
-	public Conseiller getById(long id) {
+	public Conseiller getById(int id) {
 		return consDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class ConseillerServiceImpl implements IConseillerService {
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		consDao.supprById(id);
 	}
 

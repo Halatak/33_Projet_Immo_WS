@@ -6,7 +6,7 @@ import fr.adaming.model.BienLocation;
 
 public interface IBienLocationService {
 	
-	public BienLocation getById(long id);
+	public BienLocation getById(int id);
 
 	public List<BienLocation> getAll();
 
@@ -16,6 +16,6 @@ public interface IBienLocationService {
 
 	public void suppr(final BienLocation bl);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

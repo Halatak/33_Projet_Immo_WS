@@ -24,7 +24,7 @@ public class ClasseStandardServiceImpl implements IClasseStandardService{
 	}
 	
 	@Override
-	public ClasseStandard getById(long id) {
+	public ClasseStandard getById(int id) {
 		return classeStandDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class ClasseStandardServiceImpl implements IClasseStandardService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		classeStandDao.supprById(id);
 		
 	}

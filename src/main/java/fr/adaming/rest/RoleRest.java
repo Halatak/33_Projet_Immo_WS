@@ -27,7 +27,7 @@ public class RoleRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Role getRoleById(@RequestParam("pId") long id) {
+	public Role getRoleById(@RequestParam("pId") int id) {
 		return rService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class RoleRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprRole(@PathVariable("pId") long id) {
+	public void supprRole(@PathVariable("pId") int id) {
 		rService.supprById(id);
 	}
 

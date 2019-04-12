@@ -27,7 +27,7 @@ public class BienImmobilierRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public BienImmobilier getBienImmobilierById(@RequestParam("pId") long id) {
+	public BienImmobilier getBienImmobilierById(@RequestParam("pId") int id) {
 		return biService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class BienImmobilierRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprBienImmobilier(@PathVariable("pId") long id) {
+	public void supprBienImmobilier(@PathVariable("pId") int id) {
 		biService.supprById(id);
 	}
 

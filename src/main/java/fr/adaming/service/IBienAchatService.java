@@ -6,7 +6,7 @@ import fr.adaming.model.BienAchat;
 
 public interface IBienAchatService {
 	
-	public BienAchat getById(long id);
+	public BienAchat getById(int id);
 
 	public List<BienAchat> getAll();
 
@@ -16,7 +16,7 @@ public interface IBienAchatService {
 
 	public void suppr(final BienAchat ba);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 	
 
 }

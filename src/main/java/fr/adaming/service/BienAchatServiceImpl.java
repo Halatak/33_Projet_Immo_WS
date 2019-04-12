@@ -24,7 +24,7 @@ public class BienAchatServiceImpl implements IBienAchatService{
 	}
 	
 	@Override
-	public BienAchat getById(long id) {
+	public BienAchat getById(int id) {
 		return baDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class BienAchatServiceImpl implements IBienAchatService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		baDao.supprById(id);
 		
 	}

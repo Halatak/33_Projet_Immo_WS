@@ -24,7 +24,7 @@ public class BienLocationServiceImpl implements IBienLocationService{
 	}
 
 	@Override
-	public BienLocation getById(long id) {
+	public BienLocation getById(int id) {
 		return blDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class BienLocationServiceImpl implements IBienLocationService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		blDao.supprById(id);
 		
 	}

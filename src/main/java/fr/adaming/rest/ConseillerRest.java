@@ -27,7 +27,7 @@ public class ConseillerRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Conseiller getConseillerById(@RequestParam("pId") long id) {
+	public Conseiller getConseillerById(@RequestParam("pId") int id) {
 		return consService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class ConseillerRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprConseiller(@PathVariable("pId") long id) {
+	public void supprConseiller(@PathVariable("pId") int id) {
 		consService.supprById(id);
 	}
 

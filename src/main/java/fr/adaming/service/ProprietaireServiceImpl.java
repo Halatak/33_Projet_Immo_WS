@@ -24,7 +24,7 @@ public class ProprietaireServiceImpl implements IPropritaireService{
 	}
 
 	@Override
-	public Proprietaire getById(long id) {
+	public Proprietaire getById(int id) {
 		return propDao.getById(id);
 	}
 
@@ -50,7 +50,7 @@ public class ProprietaireServiceImpl implements IPropritaireService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		propDao.supprById(id);
 		
 	}
