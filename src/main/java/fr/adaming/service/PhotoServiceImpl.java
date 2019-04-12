@@ -41,7 +41,7 @@ public class PhotoServiceImpl implements IPhotoService{
 	@Override
 	public Photo modifier(Photo ph) {
 		return phoDao.modifier(ph);
-	}
+	}   
 
 	@Override
 	public void suppr(Photo ph) {
