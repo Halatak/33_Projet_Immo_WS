@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,8 +51,13 @@ public class BienImmobilier implements Serializable {
 	protected double revenu;
 	protected String coordonneePersAgence;
 	protected int nombreChambres;
+	protected String latitude;
+	protected String longitude;
 
 	// Transformation de l'association UML en JAVA
+	@Embedded
+	private Adresse adresse;
+	
 	@ManyToOne
 	@JoinColumn(name = "classe_id", referencedColumnName = "id_classe")
 	@JsonIgnoreProperties("listeBienImmobilier")
@@ -86,7 +92,7 @@ public class BienImmobilier implements Serializable {
 	}
 
 	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu,
-			String coordonneePersAgence, int nombreChambres) {
+			String coordonneePersAgence, int nombreChambres, String latitude, String longitude, Adresse adresse) {
 		super();
 		this.statut = statut;
 		this.dateSoumission = dateSoumission;
@@ -94,10 +100,13 @@ public class BienImmobilier implements Serializable {
 		this.revenu = revenu;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.adresse = adresse;
 	}
 
 	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu,
-			String coordonneePersAgence, int nombreChambres) {
+			String coordonneePersAgence, int nombreChambres, String latitude, String longitude, Adresse adresse) {
 		super();
 		this.id = id;
 		this.statut = statut;
@@ -106,6 +115,9 @@ public class BienImmobilier implements Serializable {
 		this.revenu = revenu;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.adresse = adresse;
 	}
 
 	// Getters & setters
@@ -205,13 +217,42 @@ public class BienImmobilier implements Serializable {
 	public void setListeClient(List<Client> listeClient) {
 		this.listeClient = listeClient;
 	}
+	
+	
+	
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
 
 	// To String
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
 				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence=" + coordonneePersAgence
-				+ ", nombreChambres=" + nombreChambres;
+				+ ", nombreChambres=" + nombreChambres + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", adresse=" + adresse + ", proprietaire=" + proprietaire + "]";
 	}
+
+
 
 }
