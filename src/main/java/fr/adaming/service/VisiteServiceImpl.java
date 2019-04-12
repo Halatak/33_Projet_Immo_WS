@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IVisiteDao;
+import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 import fr.adaming.model.Visite;
 
 @Service("visiteService")
@@ -51,6 +54,21 @@ public class VisiteServiceImpl implements IVisiteService{
 	public void supprById(long id) {
 		vDao.supprById(id);
 		
+	}
+
+	@Override
+	public List<Visite> recVisiteParConseiller(Conseiller conseiller) {
+		return vDao.recVisiteParConseiller(conseiller);
+	}
+
+	@Override
+	public List<Visite> recVisiteParClient(Client client) {
+		return vDao.recVisiteParClient(client);
+	}
+
+	@Override
+	public List<Visite> recVisiteParBImmo(BienImmobilier bienImmobilier) {
+		return vDao.recVisiteParBImmo(bienImmobilier);
 	}
 
 }

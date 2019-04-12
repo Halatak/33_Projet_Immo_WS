@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IBienImmobilierDao;
 import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Proprietaire;
 
 @Service("bienImmobilierService")
 @Transactional
@@ -53,6 +55,16 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 	public void supprById(long id) {
 		bienImmoDao.supprById(id);
 		
+	}
+
+	@Override
+	public List<BienImmobilier> recBImmoParClasse(ClasseStandard classe) {
+		return bienImmoDao.recBImmoParClasse(classe);
+	}
+
+	@Override
+	public List<BienImmobilier> recBImmoParProp(Proprietaire proprietaire) {
+		return bienImmoDao.recBImmoParProp(proprietaire);
 	}
 
 }

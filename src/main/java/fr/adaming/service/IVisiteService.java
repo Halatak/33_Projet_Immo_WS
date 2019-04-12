@@ -2,6 +2,9 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 import fr.adaming.model.Visite;
 
 public interface IVisiteService {
@@ -17,5 +20,11 @@ public interface IVisiteService {
 	public void suppr(final Visite v);
 
 	public void supprById(final long id);
+	
+	public List<Visite> recVisiteParConseiller(Conseiller conseiller);
+	
+	public List<Visite> recVisiteParClient(Client client);
+	
+	public List<Visite> recVisiteParBImmo(BienImmobilier bienImmobilier);
 
 }
