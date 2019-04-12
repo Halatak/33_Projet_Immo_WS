@@ -49,7 +49,6 @@ public class BienImmobilier implements Serializable {
 	protected double revenu;
 	protected String coordonneePersAgence;
 	protected int nombreChambres;
-	protected String photo;
 
 	// Transformation de l'association UML en JAVA
 	@ManyToOne
@@ -81,7 +80,7 @@ public class BienImmobilier implements Serializable {
 	}
 
 	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu,
-			String coordonneePersAgence, int nombreChambres, String photo) {
+			String coordonneePersAgence, int nombreChambres) {
 		super();
 		this.statut = statut;
 		this.dateSoumission = dateSoumission;
@@ -89,11 +88,10 @@ public class BienImmobilier implements Serializable {
 		this.revenu = revenu;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
-		this.photo = photo;
 	}
 
 	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu,
-			String coordonneePersAgence, int nombreChambres, String photo) {
+			String coordonneePersAgence, int nombreChambres) {
 		super();
 		this.id = id;
 		this.statut = statut;
@@ -102,7 +100,6 @@ public class BienImmobilier implements Serializable {
 		this.revenu = revenu;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
-		this.photo = photo;
 	}
 
 	// Getters & setters
@@ -178,13 +175,6 @@ public class BienImmobilier implements Serializable {
 		this.nombreChambres = nombreChambres;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
 
 	public List<Client> getListeClient() {
 		return listeClient;
@@ -199,7 +189,7 @@ public class BienImmobilier implements Serializable {
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
 				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence=" + coordonneePersAgence
-				+ ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
+				+ ", nombreChambres=" + nombreChambres;
 	}
 
 }
