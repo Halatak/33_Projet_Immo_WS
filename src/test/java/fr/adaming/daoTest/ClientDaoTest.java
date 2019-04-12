@@ -45,7 +45,7 @@ public class ClientDaoTest {
 
 	// Vérifier l'ajout d'un client dans la Base de donnée
 	@Test
-	@Transactional(readOnly = true)
+	@Transactional()
 	@Rollback(true)
 	public void testAjoutClient() {
 
@@ -62,7 +62,7 @@ public class ClientDaoTest {
 
 	// Vérifier l'ajout d'un client dans la Base de donnée (vérif attributs)
 	@Test
-	@Transactional(readOnly = true)
+	@Transactional()
 	@Rollback(true)
 	public void testAjoutClient2() {
 
@@ -79,7 +79,7 @@ public class ClientDaoTest {
 	
 	//Vérifier la suppression d'un client dans la base de données
 	@Test
-	@Transactional(readOnly = true)
+	@Transactional()
 	@Rollback(true)
 	public void testSupprClient() {
 		
@@ -93,13 +93,13 @@ public class ClientDaoTest {
 	
 	// Vérifier la suppression avec le suppr (client)
 	@Test
-	@Transactional(readOnly = true)
+	@Transactional()
 	@Rollback(true)
 	public void testSupprClient2() {
 		
 		int tailleTheo = 2;
 		
-		Client clientSuppr = new Client( 2,"a", "a@a", "a", "ar", new Adresse());
+		Client clientSuppr = clientDao.getById(2);
 		
 		clientDao.suppr(clientSuppr);
 		
@@ -107,4 +107,23 @@ public class ClientDaoTest {
 		
 	}
 
+	// Vérifier la modification d'un client
+	@Test
+	@Transactional()
+	@Rollback(true)
+	public void testModifClient() {
+		
+		Client clientModif = clientDao.getById(1);
+		
+		clientModif.setNom("Arthur");
+		
+		clientDao.modifier(clientModif);
+		
+		Client clientModifie = clientDao.getById(1);
+		
+		assertEquals("Arthur", clientModifie.getNom());
+		
+	}
+	
+	
 }

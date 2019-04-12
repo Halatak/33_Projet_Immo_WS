@@ -22,20 +22,21 @@ public class BienLocation extends BienImmobilier implements Serializable {
 		super();
 	}
 
-	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, 
-			String coordonneePersAgence, int nombreChambres,double caution, double loyerMensuel,
+	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, String coordonneePersAgence,
+			int nombreChambres, String latitude, String longitude, Adresse adresse, double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
-		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
+		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, latitude, longitude,
+				adresse);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
 		this.garniture = garniture;
 	}
-
-	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, 
-			String coordonneePersAgence, int nombreChambres, double caution, double loyerMensuel,
-			String typeBail, boolean garniture) {
-		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
+	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu,
+			String coordonneePersAgence, int nombreChambres, String latitude, String longitude, Adresse adresse,
+			double caution, double loyerMensuel, String typeBail, boolean garniture) {
+		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, latitude, longitude,
+				adresse);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
@@ -76,7 +77,6 @@ public class BienLocation extends BienImmobilier implements Serializable {
 	}
 
 	// To String
-
 	@Override
 	public String toString() {
 		return "BienLocation [caution=" + caution + ", loyerMensuel=" + loyerMensuel + ", typeBail=" + typeBail
@@ -84,5 +84,8 @@ public class BienLocation extends BienImmobilier implements Serializable {
 				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
 				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + "]";
 	}
+	
+
+
 
 }
