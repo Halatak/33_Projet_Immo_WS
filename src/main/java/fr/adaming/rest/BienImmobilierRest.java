@@ -11,37 +11,55 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IBienImmobilierService;
+import fr.adaming.service.IClasseStandardService;
 
 @RestController
 @RequestMapping("/bienImmobilier")
 public class BienImmobilierRest {
 
-	//transformation de l'association uml en Java
+	// transformation de l'association uml en Java
 	@Autowired
 	private IBienImmobilierService biService;
+	@Autowired
+	private IClasseStandardService clService;
 
-	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
 	public List<BienImmobilier> findAll() {
 		return biService.getAll();
 	}
 
-	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/rechercheClassStandard", method = RequestMethod.GET, produces = "application/json")
+	public BienImmobilier getBienImmobilierByClassStandard(@RequestParam("pId") int id) {
+		ClasseStandard classeStandard = clService.getById(id);
+		return (BienImmobilier) biService.recBImmoParClasse(classeStandard);
+	}
+
+	@RequestMapping(value = "/rechercheProprietaire", method = RequestMethod.GET, produces = "application/json")
+	public BienImmobilier getBienImmobilierByProprietaire(@RequestParam("pId") int id) {
+		Proprietaire proprio = new Proprietaire();
+		proprio.setId(id);
+		return (BienImmobilier) biService.recBImmoParProp(proprio);
+	}
+
+	@RequestMapping(value = "/recherche", method = RequestMethod.GET, produces = "application/json")
 	public BienImmobilier getBienImmobilierById(@RequestParam("pId") int id) {
 		return biService.getById(id);
 	}
 
-	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/ajout", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public BienImmobilier ajoutBienImmobilier(@RequestBody BienImmobilier bi) {
 		return biService.ajout(bi);
 	}
 
-	@RequestMapping(value="/modif", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/modif", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public BienImmobilier modifBienImmobilier(@RequestBody BienImmobilier bi) {
 		return biService.modifier(bi);
 	}
 
-	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/suppr/{pId}", method = RequestMethod.DELETE)
 	public void supprBienImmobilier(@PathVariable("pId") int id) {
 		biService.supprById(id);
 	}
