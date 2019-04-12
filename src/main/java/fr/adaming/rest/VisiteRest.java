@@ -10,7 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.Client;
+import fr.adaming.model.Conseiller;
 import fr.adaming.model.Visite;
+import fr.adaming.service.IBienImmobilierService;
+import fr.adaming.service.IClientService;
+import fr.adaming.service.IConseillerService;
 import fr.adaming.service.IVisiteService;
 
 @RestController
@@ -20,6 +26,12 @@ public class VisiteRest {
 	//transformation de l'association uml en Java
 	@Autowired
 	private IVisiteService vService;
+	@Autowired
+	private IConseillerService consService;
+	@Autowired
+	private IClientService clService;
+	@Autowired
+	private IBienImmobilierService biService;
 
 	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
 	public List<Visite> findAll() {
@@ -27,17 +39,38 @@ public class VisiteRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Visite getRoleById(@RequestParam("pId") int id) {
+	public Visite getVisiteById(@RequestParam("pId") int id) {
 		return vService.getById(id);
 	}
+	
+	@RequestMapping(value="/rechercheByConseiller", method=RequestMethod.GET, produces="application/json")
+	public Visite getVisiteByIdConseiller(@RequestParam("pId") int id) {
+		//recupere le conseiller
+		Conseiller cIn = consService.getById(id);
+		return (Visite) vService.recVisiteParConseiller(cIn);
+	}
+	
+	@RequestMapping(value="/rechercheByClient", method=RequestMethod.GET, produces="application/json")
+	public Visite getVisiteByIdClient(@RequestParam("pId") int id) {
+		//recupere le client
+		Client clIn = clService.getById(id);
+		return (Visite) vService.recVisiteParClient(clIn);
+	}
+	
+	@RequestMapping(value="/rechercheByBienImmo", method=RequestMethod.GET, produces="application/json")
+	public Visite getVisiteByIdBienImmo(@RequestParam("pId") int id) {
+		//recupere le bien immo
+		BienImmobilier biIn = biService.getById(id);
+		return (Visite) vService.recVisiteParBImmo(biIn);
+	}	
 
 	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
-	public Visite ajoutRole(@RequestBody Visite v) {
+	public Visite ajoutVisite(@RequestBody Visite v) {
 		return vService.ajout(v);
 	}
 
 	@RequestMapping(value="/modif", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
-	public Visite modifRole(@RequestBody Visite v) {
+	public Visite modifVisite(@RequestBody Visite v) {
 		return vService.modifier(v);
 	}
 
