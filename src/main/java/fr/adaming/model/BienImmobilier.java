@@ -44,8 +44,6 @@ public class BienImmobilier implements Serializable{
 	@Temporal(TemporalType.DATE)
 	protected Date dateDispo;
 	protected double revenu;
-	@Temporal(TemporalType.DATE)
-	protected Date dateVisite;
 	protected String coordonneePersAgence;
 	protected int nombreChambres;
 	protected String photo;
@@ -68,20 +66,19 @@ public class BienImmobilier implements Serializable{
 		super();
 	}
 
-	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienImmobilier(String statut, Date dateSoumission, Date dateDispo, double revenu,
 			String coordonneePersAgence, int nombreChambres, String photo) {
 		super();
 		this.statut = statut;
 		this.dateSoumission = dateSoumission;
 		this.dateDispo = dateDispo;
 		this.revenu = revenu;
-		this.dateVisite = dateVisite;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
 		this.photo = photo;
 	}
 
-	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienImmobilier(int id, String statut, Date dateSoumission, Date dateDispo, double revenu,
 			String coordonneePersAgence, int nombreChambres, String photo) {
 		super();
 		this.id = id;
@@ -89,7 +86,6 @@ public class BienImmobilier implements Serializable{
 		this.dateSoumission = dateSoumission;
 		this.dateDispo = dateDispo;
 		this.revenu = revenu;
-		this.dateVisite = dateVisite;
 		this.coordonneePersAgence = coordonneePersAgence;
 		this.nombreChambres = nombreChambres;
 		this.photo = photo;
@@ -136,13 +132,6 @@ public class BienImmobilier implements Serializable{
 		this.revenu = revenu;
 	}
 
-	public Date getDateVisite() {
-		return dateVisite;
-	}
-
-	public void setDateVisite(Date dateVisite) {
-		this.dateVisite = dateVisite;
-	}
 
 	public String getCoordonneePersAgence() {
 		return coordonneePersAgence;
@@ -199,7 +188,7 @@ public class BienImmobilier implements Serializable{
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
-				+ dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite + ", coordonneePersAgence="
+				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
 				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
 	}
 	
