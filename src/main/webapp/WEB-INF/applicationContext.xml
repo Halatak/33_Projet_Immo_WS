@@ -59,7 +59,7 @@
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
 	<!-- ACtivation des annotations des transactions: @transactionnal -->
-	<tx:annotation-driven transaction-manager="transactionManagerBean" />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	
 
