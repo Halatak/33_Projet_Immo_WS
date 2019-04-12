@@ -23,9 +23,9 @@ public class BienLocation extends BienImmobilier implements Serializable {
 	}
 
 	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, int nombreChambres, String photo, double caution, double loyerMensuel,
+			String coordonneePersAgence, int nombreChambres,double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
-		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, photo);
+		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
@@ -33,9 +33,9 @@ public class BienLocation extends BienImmobilier implements Serializable {
 	}
 
 	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
-			String coordonneePersAgence, int nombreChambres, String photo, double caution, double loyerMensuel,
+			String coordonneePersAgence, int nombreChambres, double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
-		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, photo);
+		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
 		this.caution = caution;
 		this.loyerMensuel = loyerMensuel;
 		this.typeBail = typeBail;
@@ -82,7 +82,7 @@ public class BienLocation extends BienImmobilier implements Serializable {
 		return "BienLocation [caution=" + caution + ", loyerMensuel=" + loyerMensuel + ", typeBail=" + typeBail
 				+ ", garniture=" + garniture + ", id=" + id + ", statut=" + statut + ", dateSoumission="
 				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
-				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
+				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + "]";
 	}
 
 }
