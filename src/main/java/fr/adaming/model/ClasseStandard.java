@@ -35,7 +35,7 @@ public class ClasseStandard implements Serializable{
 	private double superficieMin;
 	
 	//Transformation de l'association UML en JAVA
-	@OneToMany(mappedBy="classeStandard", fetch=FetchType.EAGER) 
+	@OneToMany(mappedBy="classeStandard") 
 	@JsonIgnoreProperties("classeStandard")
 	private List<BienImmobilier> listeBienImmobilier;
 	

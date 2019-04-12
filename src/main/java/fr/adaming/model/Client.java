@@ -41,7 +41,7 @@ public class Client implements Serializable{
 	@Embedded
 	private Adresse adresse; 
 	
-	@OneToMany(mappedBy="client", fetch=FetchType.EAGER) 
+	@OneToMany(mappedBy="client") 
 	@JsonIgnoreProperties("client")
 	private List<Contrat> listeContrats; 
 	

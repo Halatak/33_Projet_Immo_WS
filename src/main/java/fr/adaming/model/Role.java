@@ -20,10 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Role implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// Attributs
 	@Id
@@ -32,11 +28,11 @@ public class Role implements Serializable{
 	private int id;
 	private String nomRole;
 	
-	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="role")
 	@JsonIgnoreProperties("role")
 	private List<Conseiller> listeConseiller;
 	
-	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="role")
 	@JsonIgnoreProperties("role")
 	private List<Client> listeClient;
 	

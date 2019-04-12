@@ -37,11 +37,11 @@ public class Proprietaire implements Serializable{
 	@Embedded
 	private Adresse adresse; 
 	
-	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
+	@OneToMany(mappedBy="proprietaire") 
 	@JsonIgnoreProperties("proprietaire")
 	private List<BienImmobilier> listeBiensImmo;
 	
-	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
+	@OneToMany(mappedBy="proprietaire") 
 	@JsonIgnoreProperties("proprietaire")
 	private List<Contrat> listeContrats; 
 	
