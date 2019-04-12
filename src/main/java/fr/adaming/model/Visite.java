@@ -42,7 +42,7 @@ public class Visite {
 	private BienImmobilier bienImmobilier;
 	
 	
-	// Constructeurs
+	// Déclaration des constructeurs
 	public Visite() {
 		super();
 	}
