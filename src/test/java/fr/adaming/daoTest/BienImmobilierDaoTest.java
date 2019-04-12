@@ -32,7 +32,7 @@ public class BienImmobilierDaoTest {
 	@Transactional(readOnly = true)
 	public void testAfficherListeBienImmobilier() {
 
-		int tailleTheo = 0;
+		int tailleTheo = 2;
 
 		// récupérer la taille de la liste
 		int tailleReelle = bImmoDao.getAll().size();
