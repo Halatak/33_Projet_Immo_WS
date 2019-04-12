@@ -19,14 +19,14 @@ public class BienAchat extends BienImmobilier implements Serializable {
 		super();
 	}
 
-	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu,
 			String coordonneePersAgence, int nombreChambres, double prix, String etat) {
 		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
 		this.prix = prix;
 		this.etat = etat;
 	}
 
-	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, 
 			String coordonneePersAgence, int nombreChambres, double prix, String etat) {
 		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
 		this.prix = prix;

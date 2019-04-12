@@ -12,55 +12,44 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.dao.IBienAchatDao;
 import fr.adaming.dao.IBienImmobilierDao;
+import fr.adaming.dao.IBienLocationDao;
 import fr.adaming.model.BienAchat;
 import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.BienLocation;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/applicationContext.xml" })
 
-public class BienImmobilierDaoTest {
+public class BienLocationDaoTest {
 
 	// TRanformation de l'association UML en JAVA
-	private IBienImmobilierDao bImmoDao;
+	private IBienImmobilierDao blDao;
 
-	// setters
+	//setter injection dependance
 	@Autowired
-	public void setbImmoDao(IBienImmobilierDao  bImmoDao) {
-		this.bImmoDao = bImmoDao;
-		bImmoDao.setClazz(BienImmobilier.class);
+	public void setBlDao(IBienImmobilierDao blDao) {
+		this.blDao = blDao;
+		blDao.setClazz(BienImmobilier.class);
 	}
-	
-	/*
-	// Vérifier la taille de liste retournée
-	@Test
-	@Transactional(readOnly = true)
-	public void testAfficherListeBienImmobilier() {
 
-		int tailleTheo = 2;
-
-		// récupérer la taille de la liste
-		int tailleReelle = bImmoDao.getAll().size();
-
-		assertEquals(tailleTheo, tailleReelle);
-
-	}
-	*/
 	// Vérifier l'ajout d'un bienImmobilier à vendre (achat) dans la BdD
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void testAddBienImmoAchat() {
-		
-		BienImmobilier bAchat = new BienAchat("Achat", new Date(), new Date(), 100, "", 10, 10, "");
+	public void testAddBienAchat() {
+
+		BienImmobilier bLoc = new BienLocation("toto", new Date(), new Date(), 150, "", 300, 1, 2, "", true);
 
 		// récupérer la taille de la liste
-		int tailleReelle = 0;
-		
-		bImmoDao.ajout(bAchat);
+		int tailleReelle = 2;
 
-		assertEquals(tailleReelle + 1, bImmoDao.getAll().size());
-		
+		blDao.ajout(bLoc);
+
+		assertEquals(tailleReelle + 1, blDao.getAll().size());
+
 	}
-	
+
+
 }

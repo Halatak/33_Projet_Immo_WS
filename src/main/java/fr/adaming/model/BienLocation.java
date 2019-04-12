@@ -22,7 +22,7 @@ public class BienLocation extends BienImmobilier implements Serializable {
 		super();
 	}
 
-	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienLocation(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, 
 			String coordonneePersAgence, int nombreChambres,double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
 		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
@@ -32,7 +32,7 @@ public class BienLocation extends BienImmobilier implements Serializable {
 		this.garniture = garniture;
 	}
 
-	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
+	public BienLocation(String statut, Date dateSoumission, Date dateDispo, double revenu, 
 			String coordonneePersAgence, int nombreChambres, double caution, double loyerMensuel,
 			String typeBail, boolean garniture) {
 		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres);
