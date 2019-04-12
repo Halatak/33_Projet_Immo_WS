@@ -18,42 +18,42 @@ import fr.adaming.service.IClasseStandardService;
 
 @RestController
 @RequestMapping("/classeStandard")
-public class ClasseStandardRest 	{
+public class ClasseStandardRest {
 
-	//transformation de l'association uml en Java
+	// transformation de l'association uml en Java
 	@Autowired
 	private IClasseStandardService csService;
 
-	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
 	public List<ClasseStandard> findAll() {
 		return csService.getAll();
 	}
 
-	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/recherche", method = RequestMethod.GET, produces = "application/json")
 	public ClasseStandard getClasseStandardById(@RequestParam("pId") int id) {
 		return csService.getById(id);
 	}
 
-	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/ajout", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public ClasseStandard ajoutClasseStandard(@RequestBody ClasseStandard cs) {
 		return csService.ajout(cs);
 	}
 
-	@RequestMapping(value="/modif", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/modif", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public ClasseStandard modifClasseStandard(@RequestBody ClasseStandard cs) {
 		return csService.modifier(cs);
 	}
 
-	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/suppr/{pId}", method = RequestMethod.DELETE)
 	public void supprClasseStandard(@PathVariable("pId") int id) {
 		csService.supprById(id);
 	}
-	
+
 	@RequestMapping(value = "/rechercheClient", method = RequestMethod.GET, produces = "application/json")
-	public ClasseStandard getClasseByClient(@RequestParam("pId") int id) {
+	public List<ClasseStandard> getClasseByClient(@RequestParam("pId") int id) {
 		Client client = new Client();
 		client.setId(id);
-		return (ClasseStandard) csService.recClasseParClient(client);
+		return csService.recClasseParClient(client);
 	}
 
 }

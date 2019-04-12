@@ -23,7 +23,7 @@ import fr.adaming.service.IVisiteService;
 @RequestMapping("/visite")
 public class VisiteRest {
 
-	//transformation de l'association uml en Java
+	// transformation de l'association uml en Java
 	@Autowired
 	private IVisiteService vService;
 	@Autowired
@@ -33,48 +33,48 @@ public class VisiteRest {
 	@Autowired
 	private IBienImmobilierService biService;
 
-	@RequestMapping(value="/liste", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
 	public List<Visite> findAll() {
 		return vService.getAll();
 	}
 
-	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
+	@RequestMapping(value = "/recherche", method = RequestMethod.GET, produces = "application/json")
 	public Visite getVisiteById(@RequestParam("pId") int id) {
 		return vService.getById(id);
 	}
-	
-	@RequestMapping(value="/rechercheByConseiller", method=RequestMethod.GET, produces="application/json")
+
+	@RequestMapping(value = "/rechercheByConseiller", method = RequestMethod.GET, produces = "application/json")
 	public Visite getVisiteByIdConseiller(@RequestParam("pId") int id) {
-		//recupere le conseiller
+		// recupere le conseiller
 		Conseiller cIn = consService.getById(id);
 		return (Visite) vService.recVisiteParConseiller(cIn);
 	}
-	
-	@RequestMapping(value="/rechercheByClient", method=RequestMethod.GET, produces="application/json")
-	public Visite getVisiteByIdClient(@RequestParam("pId") int id) {
-		//recupere le client
-		Client clIn = clService.getById(id);
-		return (Visite) vService.recVisiteParClient(clIn);
-	}
-	
-	@RequestMapping(value="/rechercheByBienImmo", method=RequestMethod.GET, produces="application/json")
-	public Visite getVisiteByIdBienImmo(@RequestParam("pId") int id) {
-		//recupere le bien immo
-		BienImmobilier biIn = biService.getById(id);
-		return (Visite) vService.recVisiteParBImmo(biIn);
-	}	
 
-	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/rechercheByClient", method = RequestMethod.GET, produces = "application/json")
+	public List<Visite> getVisiteByIdClient(@RequestParam("pId") int id) {
+		// recupere le client
+		Client clIn = clService.getById(id);
+		return vService.recVisiteParClient(clIn);
+	}
+
+	@RequestMapping(value = "/rechercheByBienImmo", method = RequestMethod.GET, produces = "application/json")
+	public List<Visite> getVisiteByIdBienImmo(@RequestParam("pId") int id) {
+		// recupere le bien immo
+		BienImmobilier biIn = biService.getById(id);
+		return vService.recVisiteParBImmo(biIn);
+	}
+
+	@RequestMapping(value = "/ajout", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Visite ajoutVisite(@RequestBody Visite v) {
 		return vService.ajout(v);
 	}
 
-	@RequestMapping(value="/modif", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	@RequestMapping(value = "/modif", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public Visite modifVisite(@RequestBody Visite v) {
 		return vService.modifier(v);
 	}
 
-	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
+	@RequestMapping(value = "/suppr/{pId}", method = RequestMethod.DELETE)
 	public void supprVisite(@PathVariable("pId") int id) {
 		vService.supprById(id);
 	}

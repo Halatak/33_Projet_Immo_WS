@@ -34,16 +34,17 @@ public class BienImmobilierRest {
 	}
 
 	@RequestMapping(value = "/rechercheClassStandard", method = RequestMethod.GET, produces = "application/json")
-	public BienImmobilier getBienImmobilierByClassStandard(@RequestParam("pId") int id) {
+	public List<BienImmobilier> getBienImmobilierByClassStandard(@RequestParam("pId") int id) {
 		ClasseStandard classeStandard = clService.getById(id);
-		return (BienImmobilier) biService.recBImmoParClasse(classeStandard);
+		return biService.recBImmoParClasse(classeStandard);
 	}
 
 	@RequestMapping(value = "/rechercheProprietaire", method = RequestMethod.GET, produces = "application/json")
-	public BienImmobilier getBienImmobilierByProprietaire(@RequestParam("pId") int id) {
+	public List<BienImmobilier> getBienImmobilierByProprietaire(@RequestParam("pId") int id) {
 		Proprietaire proprio = new Proprietaire();
 		proprio.setId(id);
-		return (BienImmobilier) biService.recBImmoParProp(proprio);
+
+		return biService.recBImmoParProp(proprio);
 	}
 
 	@RequestMapping(value = "/recherche", method = RequestMethod.GET, produces = "application/json")
@@ -55,7 +56,7 @@ public class BienImmobilierRest {
 	public BienImmobilier ajoutBienAchat(@RequestBody BienAchat ba) {
 		return biService.ajout(ba);
 	}
-	
+
 	@RequestMapping(value = "/ajoutLocation", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public BienImmobilier ajoutBienLocation(@RequestBody BienLocation bl) {
 		return biService.ajout(bl);
@@ -65,7 +66,7 @@ public class BienImmobilierRest {
 	public BienImmobilier modifBienAchat(@RequestBody BienAchat ba) {
 		return biService.modifier(ba);
 	}
-	
+
 	@RequestMapping(value = "/modifLocation", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
 	public BienImmobilier modifBienLocation(@RequestBody BienLocation bl) {
 		return biService.modifier(bl);
