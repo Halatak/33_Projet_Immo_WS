@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public abstract class AbstraitHibernateDao<T extends Serializable> implements IGeneriqueDao<T> {
 
 	private Class<T> clazz;
