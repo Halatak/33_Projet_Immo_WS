@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,10 +30,10 @@ public class Role implements Serializable{
 	private int id;
 	private String nomRole;
 	
-	@OneToMany(mappedBy="role")
+	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
 	private List<Conseiller> listeConseiller;
 	
-	@OneToMany(mappedBy="role")
+	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
 	private List<Client> listeClient;
 	
 	// Constructeurs

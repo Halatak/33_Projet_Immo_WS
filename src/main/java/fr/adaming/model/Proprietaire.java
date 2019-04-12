@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,10 +39,10 @@ public class Proprietaire implements Serializable{
 	@Embedded
 	private Adresse adresse; 
 	
-	@OneToMany(mappedBy="proprietaire") 
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
 	private List<BienImmobilier> listeBiensImmo;
 	
-	@OneToMany(mappedBy="proprietaire") 
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
 	private List<Contrat> listeContrats; 
 	
 	// IL MANQUE L'ASSO AVEC ROLE 
