@@ -6,7 +6,7 @@ import fr.adaming.model.Role;
 
 public interface IRoleService {
 	
-	public Role getById(long id);
+	public Role getById(int id);
 
 	public List<Role> getAll();
 
@@ -16,6 +16,6 @@ public interface IRoleService {
 
 	public void suppr(final Role r);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

@@ -27,7 +27,7 @@ public class ProprietaireRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Proprietaire getProprietaireById(@RequestParam("pId") long id) {
+	public Proprietaire getProprietaireById(@RequestParam("pId") int id) {
 		return pService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class ProprietaireRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprProprietaire(@PathVariable("pId") long id) {
+	public void supprProprietaire(@PathVariable("pId") int id) {
 		pService.supprById(id);
 	}
 

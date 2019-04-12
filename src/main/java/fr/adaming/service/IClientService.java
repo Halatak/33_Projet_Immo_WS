@@ -6,7 +6,7 @@ import fr.adaming.model.Client;
 
 public interface IClientService {
 	
-	public Client getById(long id);
+	public Client getById(int id);
 
 	public List<Client> getAll();
 
@@ -16,6 +16,6 @@ public interface IClientService {
 
 	public void suppr(final Client cl);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

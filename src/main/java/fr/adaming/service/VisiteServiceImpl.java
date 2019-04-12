@@ -25,7 +25,7 @@ public class VisiteServiceImpl implements IVisiteService{
 	}
 
 	@Override
-	public Visite getById(long id) {
+	public Visite getById(int id) {
 		return vDao.getById(id);
 	}
 
@@ -51,7 +51,7 @@ public class VisiteServiceImpl implements IVisiteService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		vDao.supprById(id);
 		
 	}

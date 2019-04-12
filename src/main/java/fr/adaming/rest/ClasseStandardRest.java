@@ -27,7 +27,7 @@ public class ClasseStandardRest 	{
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public ClasseStandard getClasseStandardById(@RequestParam("pId") long id) {
+	public ClasseStandard getClasseStandardById(@RequestParam("pId") int id) {
 		return csService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class ClasseStandardRest 	{
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprClasseStandard(@PathVariable("pId") long id) {
+	public void supprClasseStandard(@PathVariable("pId") int id) {
 		csService.supprById(id);
 	}
 

@@ -6,7 +6,7 @@ import fr.adaming.model.Contrat;
 
 public interface IContratService {
 	
-	public Contrat getById(long id);
+	public Contrat getById(int id);
 
 	public List<Contrat> getAll();
 
@@ -16,6 +16,6 @@ public interface IContratService {
 
 	public void suppr(final Contrat cont);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

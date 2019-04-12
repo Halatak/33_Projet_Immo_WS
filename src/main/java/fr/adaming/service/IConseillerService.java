@@ -6,7 +6,7 @@ import fr.adaming.model.Conseiller;
 
 public interface IConseillerService {
 	
-	public Conseiller getById(long id);
+	public Conseiller getById(int id);
 
 	public List<Conseiller> getAll();
 
@@ -16,6 +16,6 @@ public interface IConseillerService {
 
 	public void suppr(final Conseiller cons);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

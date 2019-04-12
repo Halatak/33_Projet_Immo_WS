@@ -27,7 +27,7 @@ public class VisiteRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Visite getRoleById(@RequestParam("pId") long id) {
+	public Visite getRoleById(@RequestParam("pId") int id) {
 		return vService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class VisiteRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprVisite(@PathVariable("pId") long id) {
+	public void supprVisite(@PathVariable("pId") int id) {
 		vService.supprById(id);
 	}
 

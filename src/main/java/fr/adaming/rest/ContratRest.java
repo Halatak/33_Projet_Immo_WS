@@ -27,7 +27,7 @@ public class ContratRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Contrat getContratById(@RequestParam("pId") long id) {
+	public Contrat getContratById(@RequestParam("pId") int id) {
 		return contService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class ContratRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprContrat(@PathVariable("pId") long id) {
+	public void supprContrat(@PathVariable("pId") int id) {
 		contService.supprById(id);
 	}
 

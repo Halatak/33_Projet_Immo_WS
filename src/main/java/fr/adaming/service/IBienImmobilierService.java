@@ -8,7 +8,7 @@ import fr.adaming.model.Proprietaire;
 
 public interface IBienImmobilierService {
 
-	public BienImmobilier getById(long id);
+	public BienImmobilier getById(int id);
 
 	public List<BienImmobilier> getAll();
 
@@ -18,7 +18,7 @@ public interface IBienImmobilierService {
 
 	public void suppr(final BienImmobilier bi);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 	
 	public List<BienImmobilier> recBImmoParClasse(ClasseStandard classe);
 	

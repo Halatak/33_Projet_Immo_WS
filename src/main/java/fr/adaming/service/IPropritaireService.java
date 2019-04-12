@@ -6,7 +6,7 @@ import fr.adaming.model.Proprietaire;
 
 public interface IPropritaireService {
 	
-	public Proprietaire getById(long id);
+	public Proprietaire getById(int id);
 
 	public List<Proprietaire> getAll();
 
@@ -16,6 +16,6 @@ public interface IPropritaireService {
 
 	public void suppr(final Proprietaire p);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

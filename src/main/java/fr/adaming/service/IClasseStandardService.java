@@ -6,7 +6,7 @@ import fr.adaming.model.ClasseStandard;
 
 public interface IClasseStandardService {
 	
-	public ClasseStandard getById(long id);
+	public ClasseStandard getById(int id);
 
 	public List<ClasseStandard> getAll();
 
@@ -16,6 +16,6 @@ public interface IClasseStandardService {
 
 	public void suppr(final ClasseStandard cs);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 
 }

@@ -9,7 +9,7 @@ import fr.adaming.model.Visite;
 
 public interface IVisiteService {
 	
-	public Visite getById(long id);
+	public Visite getById(int id);
 
 	public List<Visite> getAll();
 
@@ -19,7 +19,7 @@ public interface IVisiteService {
 
 	public void suppr(final Visite v);
 
-	public void supprById(final long id);
+	public void supprById(final int id);
 	
 	public List<Visite> recVisiteParConseiller(Conseiller conseiller);
 	

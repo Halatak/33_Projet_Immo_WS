@@ -26,7 +26,7 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 	}
 
 	@Override
-	public BienImmobilier getById(long id) {
+	public BienImmobilier getById(int id) {
 		return bienImmoDao.getById(id);
 	}
 
@@ -52,7 +52,7 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		bienImmoDao.supprById(id);
 		
 	}

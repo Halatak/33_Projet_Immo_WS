@@ -27,7 +27,7 @@ public class ClientRest {
 	}
 
 	@RequestMapping(value="/recherche", method=RequestMethod.GET, produces="application/json")
-	public Client getRoleById(@RequestParam("pId") long id) {
+	public Client getRoleById(@RequestParam("pId") int id) {
 		return clService.getById(id);
 	}
 
@@ -42,7 +42,7 @@ public class ClientRest {
 	}
 
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
-	public void supprRole(@PathVariable("pId") long id) {
+	public void supprRole(@PathVariable("pId") int id) {
 		clService.supprById(id);
 	}
 

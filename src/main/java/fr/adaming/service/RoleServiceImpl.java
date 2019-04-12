@@ -50,13 +50,13 @@ public class RoleServiceImpl implements IRoleService{
 	}
 
 	@Override
-	public void supprById(long id) {
+	public void supprById(int id) {
 		roleDao.supprById(id);
 
 	}
 
 	@Override
-	public Role getById(long id) {
+	public Role getById(int id) {
 		return roleDao.getById(id);
 	}
 
