@@ -3,6 +3,7 @@ package fr.adaming.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -50,7 +51,7 @@ public class Client implements Serializable{
 	@JsonIgnoreProperties("listeClient")
 	private Role role;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="listeClient")
 	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="classe_id"))
 	@JsonIgnoreProperties("listeClient")
 	private List<ClasseStandard> listeClasseStandard;
