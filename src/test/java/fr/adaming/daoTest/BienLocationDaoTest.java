@@ -12,10 +12,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.adaming.dao.IBienAchatDao;
 import fr.adaming.dao.IBienImmobilierDao;
-import fr.adaming.dao.IBienLocationDao;
-import fr.adaming.model.BienAchat;
+import fr.adaming.model.Adresse;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.BienLocation;
 
@@ -40,10 +38,10 @@ public class BienLocationDaoTest {
 	@Rollback(true)
 	public void testAddBienAchat() {
 
-		BienImmobilier bLoc = new BienLocation("toto", new Date(), new Date(), 150, "", 300, 1, 2, "", true);
+		BienImmobilier bLoc = new BienLocation("tiit", new Date(), new Date(), 1000000, "", 4, "", "", new Adresse(), 1, 1, "", true);
 
 		// récupérer la taille de la liste
-		int tailleReelle = 2;
+		int tailleReelle = 4;
 
 		blDao.ajout(bLoc);
 

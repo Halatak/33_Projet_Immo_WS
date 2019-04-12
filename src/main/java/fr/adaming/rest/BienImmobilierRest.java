@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.BienAchat;
 import fr.adaming.model.BienImmobilier;
+import fr.adaming.model.BienLocation;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IBienImmobilierService;
@@ -49,14 +51,24 @@ public class BienImmobilierRest {
 		return biService.getById(id);
 	}
 
-	@RequestMapping(value = "/ajout", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public BienImmobilier ajoutBienImmobilier(@RequestBody BienImmobilier bi) {
-		return biService.ajout(bi);
+	@RequestMapping(value = "/ajoutAchat", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public BienImmobilier ajoutBienAchat(@RequestBody BienAchat ba) {
+		return biService.ajout(ba);
+	}
+	
+	@RequestMapping(value = "/ajoutLocation", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	public BienImmobilier ajoutBienLocation(@RequestBody BienLocation bl) {
+		return biService.ajout(bl);
 	}
 
-	@RequestMapping(value = "/modif", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-	public BienImmobilier modifBienImmobilier(@RequestBody BienImmobilier bi) {
-		return biService.modifier(bi);
+	@RequestMapping(value = "/modifAchat", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
+	public BienImmobilier modifBienAchat(@RequestBody BienAchat ba) {
+		return biService.modifier(ba);
+	}
+	
+	@RequestMapping(value = "/modifLocation", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
+	public BienImmobilier modifBienLocation(@RequestBody BienLocation bl) {
+		return biService.modifier(bl);
 	}
 
 	@RequestMapping(value = "/suppr/{pId}", method = RequestMethod.DELETE)

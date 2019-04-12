@@ -16,7 +16,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import fr.adaming.model.Client;
-import fr.adaming.model.Dossier;
+import fr.adaming.model.Contrat;
 
 @Service("pdfService")
 @Transactional
@@ -37,7 +37,7 @@ public class PDFService implements IPDFService {
 
 	// Méthode pour créer le PDF et le placer à l'emplacement ci-dessus
 	// public int creerPDF(Produit prod) {
-	public int creerPDF(Dossier dossier, Client client, int numero) {
+	public int creerPDF(Contrat contrat, Client client, int numero) {
 		String chemin = "C:\\Users\\IN-BR-006\\PDFVoyage\\FicheVoyage" + Integer.toString(numero) + ".pdf";
 
 		// Vérificateur de fonctionnement
@@ -59,11 +59,7 @@ public class PDFService implements IPDFService {
 			doc.add(new Paragraph("Bonjour,"));
 			doc.add(new Paragraph("Voici votre dossier : "));
 			doc.add(new Paragraph(" "));
-			doc.add(new Paragraph(dossier.toString()));
-			doc.add(new Paragraph(" "));
-			doc.add(new Paragraph(dossier.getVoyage().toString()));
-			doc.add(new Paragraph(" "));
-			doc.add(new Paragraph(dossier.getVoyage().getListeFormule().toString()));
+			doc.add(new Paragraph(contrat.toString()));
 			doc.add(new Paragraph(" "));
 
 			doc.add(new Paragraph(

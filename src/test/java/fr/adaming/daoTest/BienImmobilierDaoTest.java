@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IBienImmobilierDao;
+import fr.adaming.model.Adresse;
 import fr.adaming.model.BienAchat;
 import fr.adaming.model.BienImmobilier;
 
@@ -52,10 +53,11 @@ public class BienImmobilierDaoTest {
 	@Rollback(true)
 	public void testAddBienImmoAchat() {
 		
-		BienImmobilier bAchat = new BienAchat("Achat", new Date(), new Date(), 100, "", 10, 10, "");
+		BienImmobilier bAchat = new BienAchat("Achat", new Date(), new Date(), 100, "", 3, "", "", new Adresse(), 100, "");
+		
 
 		// récupérer la taille de la liste
-		int tailleReelle = 0;
+		int tailleReelle = 4;
 		
 		bImmoDao.ajout(bAchat);
 

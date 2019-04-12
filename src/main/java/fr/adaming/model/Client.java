@@ -64,8 +64,8 @@ public class Client implements Serializable {
 	private List<ClasseStandard> listeClasseStandard;
 
 	@ManyToMany(mappedBy = "listeClient",targetEntity=BienImmobilier.class)
-	//@JsonIgnoreProperties("listeClient")
-	@JsonBackReference
+	@JsonIgnoreProperties("listeClient")
+	//@JsonBackReference
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<BienImmobilier> listeBienImmobilier;
 

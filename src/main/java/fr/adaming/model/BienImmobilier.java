@@ -72,8 +72,8 @@ public class BienImmobilier implements Serializable {
 
 	@ManyToMany(targetEntity = Client.class)
 	@JoinTable(name = "tab_assoc2", joinColumns = @JoinColumn(name = "bimmo_id"), inverseJoinColumns = @JoinColumn(name = "cl_id"))
-	// @JsonIgnoreProperties("listeBienImmobilier")
-	@JsonManagedReference
+	@JsonIgnoreProperties("listeBienImmobilier")
+	//@JsonManagedReference
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Client> listeClient;
 
