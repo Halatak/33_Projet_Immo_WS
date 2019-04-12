@@ -8,8 +8,8 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @Access(AccessType.FIELD)
-public class Adresse implements Serializable{
-
+public class Adresse implements Serializable {
+	private static final long serialVersionUID = 1L;
 	// Attributs
 	private String rue;
 	private int numero;

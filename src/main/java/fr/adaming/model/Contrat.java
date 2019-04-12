@@ -16,14 +16,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Contrat implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// Attributs
 	@Id
@@ -37,10 +35,12 @@ public class Contrat implements Serializable{
 	//Transformation de l'association UML en JAVA
 	@ManyToOne
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
+	@JsonIgnoreProperties("listeContrats")
 	private Proprietaire proprietaire; 
 	
 	@ManyToOne
 	@JoinColumn(name = "cl_id", referencedColumnName = "id_cl")
+	@JsonIgnoreProperties("listeContrats")
 	private Client client; 
 	
 	// Constructeurs

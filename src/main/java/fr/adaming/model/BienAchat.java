@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 
 @DiscriminatorValue(value = "Achat")
 @Entity
-public class BienAchat extends BienImmobilier implements Serializable{
-
+public class BienAchat extends BienImmobilier implements Serializable {
+	private static final long serialVersionUID = 1L;
 	// Attributs
 	private double prix;
 	private String etat;
@@ -21,14 +21,14 @@ public class BienAchat extends BienImmobilier implements Serializable{
 
 	public BienAchat(int id, String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
 			String coordonneePersAgence, int nombreChambres, String photo, double prix, String etat) {
-		super(id, statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
+		super(id, statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, photo);
 		this.prix = prix;
 		this.etat = etat;
 	}
 
 	public BienAchat(String statut, Date dateSoumission, Date dateDispo, double revenu, Date dateVisite,
 			String coordonneePersAgence, int nombreChambres, String photo, double prix, String etat) {
-		super(statut, dateSoumission, dateDispo, revenu, dateVisite, coordonneePersAgence, nombreChambres, photo);
+		super(statut, dateSoumission, dateDispo, revenu, coordonneePersAgence, nombreChambres, photo);
 		this.prix = prix;
 		this.etat = etat;
 	}
@@ -50,21 +50,13 @@ public class BienAchat extends BienImmobilier implements Serializable{
 		this.etat = etat;
 	}
 
-	
 	// To String
 
 	@Override
 	public String toString() {
 		return "BienAchat [prix=" + prix + ", etat=" + etat + ", id=" + id + ", statut=" + statut + ", dateSoumission="
-				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", dateVisite=" + dateVisite
-				+ ", coordonneePersAgence=" + coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo="
-				+ photo + "]";
+				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
+				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + ", photo=" + photo + "]";
 	}
-
-
-
-	
-
-
 
 }

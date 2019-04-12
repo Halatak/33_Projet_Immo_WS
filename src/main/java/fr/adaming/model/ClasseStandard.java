@@ -17,6 +17,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -34,10 +36,12 @@ public class ClasseStandard implements Serializable{
 	
 	//Transformation de l'association UML en JAVA
 	@OneToMany(mappedBy="classeStandard", fetch=FetchType.EAGER) 
+	@JsonIgnoreProperties("classeStandard")
 	private List<BienImmobilier> listeBienImmobilier;
 	
 	@ManyToMany
 	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="classe_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
+	@JsonIgnoreProperties("listeClasseStandard")
 	private List<Client> listeClient;
 	
 	// Constructeurs

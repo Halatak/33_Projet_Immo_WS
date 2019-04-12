@@ -14,6 +14,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -31,9 +33,11 @@ public class Role implements Serializable{
 	private String nomRole;
 	
 	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
+	@JsonIgnoreProperties("role")
 	private List<Conseiller> listeConseiller;
 	
 	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
+	@JsonIgnoreProperties("role")
 	private List<Client> listeClient;
 	
 	// Constructeurs

@@ -16,11 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -28,10 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BienImmobilier implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// Attributs
 	@Id
@@ -51,15 +50,22 @@ public class BienImmobilier implements Serializable{
 	//Transformation de l'association UML en JAVA
 	@ManyToOne
 	@JoinColumn(name = "classe_id", referencedColumnName = "id_classe")
+	@JsonIgnoreProperties("listeBienImmobilier")
 	private ClasseStandard classeStandard;
 	
 	@ManyToOne
 	@JoinColumn(name = "pr_id", referencedColumnName = "id_pr")
+	@JsonIgnoreProperties("listeBiensImmo")
 	private Proprietaire proprietaire;
 	
 	@ManyToMany
 	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="bimmo_id"),inverseJoinColumns=@JoinColumn(name="cl_id"))
+	@JsonIgnoreProperties("listeBienImmobilier")
 	private List<Client> listeClient;
+	
+	@OneToOne(mappedBy="bienImmobilier")
+	@JsonIgnoreProperties("bienImmobilier")
+	private Visite visite;
 
 	// Constructeurs
 	public BienImmobilier() {

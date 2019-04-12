@@ -15,9 +15,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @XmlRootElement
@@ -39,19 +42,27 @@ public class Client implements Serializable{
 	private Adresse adresse; 
 	
 	@OneToMany(mappedBy="client", fetch=FetchType.EAGER) 
+	@JsonIgnoreProperties("client")
 	private List<Contrat> listeContrats; 
 	
 	@ManyToOne
 	@JoinColumn(name="roles_id",referencedColumnName="id_roles")
+	@JsonIgnoreProperties("listeClient")
 	private Role role;
 	
 	@ManyToMany
 	@JoinTable(name="tab_assoc", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="classe_id"))
+	@JsonIgnoreProperties("listeClient")
 	private List<ClasseStandard> listeClasseStandard;
 	
 	@ManyToMany
 	@JoinTable(name="tab_assoc2", joinColumns=@JoinColumn(name="cl_id"),inverseJoinColumns=@JoinColumn(name="bimmo_id"))
+	@JsonIgnoreProperties("listeClient")
 	private List<BienImmobilier> listeBienImmobilier;
+	
+	@OneToOne(mappedBy="client")
+	@JsonIgnoreProperties("client")
+	private Visite visite;
 	
 	// IL MANQUE L'ASSO AVEC ROLE ET CLASSE STANDARD
 	

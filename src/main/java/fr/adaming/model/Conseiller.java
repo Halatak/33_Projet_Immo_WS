@@ -9,18 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Conseiller implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// Attributs 
 	@Id
@@ -32,7 +31,12 @@ public class Conseiller implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="roles_id",referencedColumnName="id_roles")
+	@JsonIgnoreProperties("listeConseiller")
 	private Role role;
+	
+	@OneToOne(mappedBy="conseiller")
+	@JsonIgnoreProperties("conseiller")
+	private Visite visite;
 	
 	// IL MANQUE L'ASSO AVEC ROLE 
 	

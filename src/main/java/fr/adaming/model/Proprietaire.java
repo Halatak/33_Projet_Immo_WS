@@ -15,14 +15,12 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Proprietaire implements Serializable{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	// Déclaration des attributs
 	@Id
@@ -40,9 +38,11 @@ public class Proprietaire implements Serializable{
 	private Adresse adresse; 
 	
 	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
+	@JsonIgnoreProperties("proprietaire")
 	private List<BienImmobilier> listeBiensImmo;
 	
 	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER) 
+	@JsonIgnoreProperties("proprietaire")
 	private List<Contrat> listeContrats; 
 	
 	// IL MANQUE L'ASSO AVEC ROLE 
