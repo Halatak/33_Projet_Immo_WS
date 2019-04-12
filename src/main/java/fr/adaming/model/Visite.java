@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,7 +19,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Visite {
+public class Visite implements Serializable{
+	private static final long serialVersionUID = 1L;
 	// Déclaration des attributs
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
