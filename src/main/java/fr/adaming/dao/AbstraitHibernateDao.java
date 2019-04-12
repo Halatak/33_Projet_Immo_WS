@@ -18,7 +18,7 @@ public abstract class AbstraitHibernateDao<T extends Serializable> implements IG
 	}
 
 	// methode getById
-	public T getById(long id) {
+	public T getById(int id) {
 		return (T) em.find(clazz, id);
 		
 	}
@@ -45,7 +45,7 @@ public abstract class AbstraitHibernateDao<T extends Serializable> implements IG
 		em.remove(entity);
 	}
 
-	public void supprById(long entityId) {
+	public void supprById(int entityId) {
 		T entity = getById(entityId);
 		suppr(entity);
 	}

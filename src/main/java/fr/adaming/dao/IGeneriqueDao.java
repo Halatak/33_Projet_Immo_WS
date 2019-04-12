@@ -7,7 +7,7 @@ public interface IGeneriqueDao<T>{
 	
 	public void setClazz(Class<T> clazzToSet);
 	
-	public T getById(final long id);
+	public T getById(final int id);
 
 	public List<T> getAll();
 
@@ -17,6 +17,6 @@ public interface IGeneriqueDao<T>{
 
 	public void suppr(final T entity);
 
-	public void supprById(final long entityId);
+	public void supprById(final int entityId);
 
 }
