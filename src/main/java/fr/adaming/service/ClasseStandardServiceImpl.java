@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClasseStandardDao;
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Client;
 
 @Service("classeStandardService")
 @Transactional
@@ -53,6 +54,11 @@ public class ClasseStandardServiceImpl implements IClasseStandardService{
 	public void supprById(int id) {
 		classeStandDao.supprById(id);
 		
+	}
+
+	@Override
+	public List<ClasseStandard> recClasseParClient(Client client) {
+		return classeStandDao.recClasseParClient(client);
 	}
 
 }
