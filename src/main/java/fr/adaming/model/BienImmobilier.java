@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -74,6 +75,11 @@ public class BienImmobilier implements Serializable {
 	@JsonIgnoreProperties("bienImmobilier")
 	private Visite visite;
 
+	@OneToMany(mappedBy = "bienImmo")
+	@JsonIgnoreProperties("bienImmo")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Photo> listePhoto;
+
 	// Constructeurs
 	public BienImmobilier() {
 		super();
@@ -103,8 +109,25 @@ public class BienImmobilier implements Serializable {
 	}
 
 	// Getters & setters
+
 	public int getId() {
 		return id;
+	}
+
+	public Visite getVisite() {
+		return visite;
+	}
+
+	public void setVisite(Visite visite) {
+		this.visite = visite;
+	}
+
+	public List<Photo> getListePhoto() {
+		return listePhoto;
+	}
+
+	public void setListePhoto(List<Photo> listePhoto) {
+		this.listePhoto = listePhoto;
 	}
 
 	public void setId(int id) {
@@ -174,7 +197,6 @@ public class BienImmobilier implements Serializable {
 	public void setNombreChambres(int nombreChambres) {
 		this.nombreChambres = nombreChambres;
 	}
-
 
 	public List<Client> getListeClient() {
 		return listeClient;
