@@ -20,6 +20,7 @@ public abstract class AbstraitHibernateDao<T extends Serializable> implements IG
 	// methode getById
 	public T getById(long id) {
 		return (T) em.find(clazz, id);
+		
 	}
 
 	public List<T> getAll() {
