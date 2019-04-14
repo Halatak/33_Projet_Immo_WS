@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 import fr.adaming.service.IClientService;
 
@@ -44,6 +45,13 @@ public class ClientRest {
 	@RequestMapping(value="/suppr/{pId}", method=RequestMethod.DELETE)
 	public void supprRole(@PathVariable("pId") int id) {
 		clService.supprById(id);
+	}
+	
+	@RequestMapping(value = "/rechercheClasse", method = RequestMethod.GET, produces = "application/json")
+	public List<Client> getClientByClasse(@RequestParam("pId") int id) {
+		ClasseStandard classe = new ClasseStandard();
+		classe.setId(id);
+		return clService.recClientParClasse(classe);
 	}
 
 }

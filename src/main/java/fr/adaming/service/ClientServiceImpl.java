@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClientDao;
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 
 @Service("clientService")
@@ -52,5 +53,11 @@ public class ClientServiceImpl implements IClientService{
 	public void supprById(int id) {
 		clDao.supprById(id);		
 	}
+	
+	@Override
+	public List<Client> recClientParClasse(ClasseStandard classe){
+		return clDao.recClientParClasse(classe);
+	}
+
 
 }

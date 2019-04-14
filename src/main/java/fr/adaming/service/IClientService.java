@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 
 public interface IClientService {
@@ -17,5 +18,7 @@ public interface IClientService {
 	public void suppr(final Client cl);
 
 	public void supprById(final int id);
+	
+	public List<Client> recClientParClasse(ClasseStandard classe);
 
 }

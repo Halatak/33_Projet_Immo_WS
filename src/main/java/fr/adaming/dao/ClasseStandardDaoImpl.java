@@ -20,7 +20,7 @@ public class ClasseStandardDaoImpl extends AbstraitHibernateDao<ClasseStandard> 
 	@Override
 	public List<ClasseStandard> recClasseParClient(Client client) {
 		// Requête JPQL
-		String req = "SELECT c FROM ClasseStandard as c WHERE c.client.id=:pId";
+		String req = "SELECT c FROM ClasseStandard as c JOIN c.listeClient cl WHERE cl.id=:pId";
 
 		// Récupérer un objet de type Query
 		Query query = em.createQuery(req);
