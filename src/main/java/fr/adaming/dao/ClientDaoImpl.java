@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 
@@ -27,6 +28,20 @@ public class ClientDaoImpl extends AbstraitHibernateDao<Client> implements IClie
 
 		// Passage des paramètres
 		query.setParameter("pId", classe.getId());
+
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Client> recClientParBienImmo(BienImmobilier bimmo) {
+		// Requête JPQL
+		String req = "SELECT c FROM Client as c JOIN c.listeBienImmobilier bi WHERE bi.id=:pId";
+
+		// Récupérer un objet de type Query
+		Query query = em.createQuery(req);
+
+		// Passage des paramètres
+		query.setParameter("pId", bimmo.getId());
 
 		return query.getResultList();
 	}

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.adaming.dao.IBienImmobilierDao;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Client;
 import fr.adaming.model.Proprietaire;
 
 @Service("bienImmobilierService")
@@ -65,6 +66,11 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 	@Override
 	public List<BienImmobilier> recBImmoParProp(Proprietaire proprietaire) {
 		return bienImmoDao.recBImmoParProp(proprietaire);
+	}
+
+	@Override
+	public List<BienImmobilier> recBImmoParClient(Client client) {
+		return bienImmoDao.recBImmoParClient(client);
 	}
 
 }

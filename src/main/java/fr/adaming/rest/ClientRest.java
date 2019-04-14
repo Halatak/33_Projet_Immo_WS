@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 import fr.adaming.service.IClientService;
@@ -52,6 +53,13 @@ public class ClientRest {
 		ClasseStandard classe = new ClasseStandard();
 		classe.setId(id);
 		return clService.recClientParClasse(classe);
+	}
+	
+	@RequestMapping(value = "/rechercheBienImmo", method = RequestMethod.GET, produces = "application/json")
+	public List<Client> getClientByBImmo(@RequestParam("pId") int id) {
+		BienImmobilier bimmo = new BienImmobilier();
+		bimmo.setId(id);
+		return clService.recClientParBienImmo(bimmo);
 	}
 
 }

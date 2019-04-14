@@ -14,6 +14,7 @@ import fr.adaming.model.BienAchat;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.BienLocation;
 import fr.adaming.model.ClasseStandard;
+import fr.adaming.model.Client;
 import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IBienImmobilierService;
 import fr.adaming.service.IClasseStandardService;
@@ -46,6 +47,14 @@ public class BienImmobilierRest {
 
 		return biService.recBImmoParProp(proprio);
 	}
+	
+	@RequestMapping(value = "/rechercheClient", method = RequestMethod.GET, produces = "application/json")
+	public List<BienImmobilier> getBImmoByClient(@RequestParam("pId") int id) {
+		Client client = new Client();
+		client.setId(id);
+		return biService.recBImmoParClient(client);
+	}
+
 
 	@RequestMapping(value = "/recherche", method = RequestMethod.GET, produces = "application/json")
 	public BienImmobilier getBienImmobilierById(@RequestParam("pId") int id) {

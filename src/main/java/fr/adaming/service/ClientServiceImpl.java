@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IClientDao;
+import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 
@@ -57,6 +58,11 @@ public class ClientServiceImpl implements IClientService{
 	@Override
 	public List<Client> recClientParClasse(ClasseStandard classe){
 		return clDao.recClientParClasse(classe);
+	}
+
+	@Override
+	public List<Client> recClientParBienImmo(BienImmobilier bimmo) {
+		return clDao.recClientParBienImmo(bimmo);
 	}
 
 
