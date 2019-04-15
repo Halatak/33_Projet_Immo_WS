@@ -73,4 +73,9 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 		return bienImmoDao.recBImmoParClient(client);
 	}
 
+	@Override
+	public List<BienImmobilier> recBImmoParType(String type) {
+		return bienImmoDao.recBImmoParType(type);
+	}
+
 }

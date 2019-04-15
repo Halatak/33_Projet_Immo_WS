@@ -12,6 +12,8 @@ public interface IBienImmobilierDao extends IGeneriqueDao<BienImmobilier >{
 	public List<BienImmobilier> recBImmoParClasse(ClasseStandard classe);
 	public List<BienImmobilier> recBImmoParProp(Proprietaire proprietaire);
 	public List<BienImmobilier> recBImmoParClient(Client client);
+	public List<BienImmobilier> recBImmoParType(String type);
+
 
 
 }

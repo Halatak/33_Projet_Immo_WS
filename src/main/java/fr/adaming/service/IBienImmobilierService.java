@@ -27,4 +27,6 @@ public interface IBienImmobilierService {
 	
 	public List<BienImmobilier> recBImmoParClient(Client client);
 	
+	public List<BienImmobilier> recBImmoParType(String type);
+	
 }
