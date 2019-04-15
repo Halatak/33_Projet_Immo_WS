@@ -4,20 +4,20 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 
-<!-- declaration de listener -->
-<listener>
-	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-</listener>
+	<!-- declaration de listener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
-<!-- déclaration de la servlet de springMVC -->
-<servlet>
-	<servlet-name>mvc</servlet-name>
-	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-</servlet>
+	<!-- déclaration de la servlet de springMVC -->
+	<servlet>
+		<servlet-name>mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
 
-<servlet-mapping>
-	<servlet-name>mvc</servlet-name>
-	<url-pattern>/rest/*</url-pattern>
-</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>mvc</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>
