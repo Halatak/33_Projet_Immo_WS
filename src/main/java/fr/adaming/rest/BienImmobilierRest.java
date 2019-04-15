@@ -18,7 +18,9 @@ import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
 import fr.adaming.model.Photo;
 import fr.adaming.model.Proprietaire;
+import fr.adaming.service.IBienAchatService;
 import fr.adaming.service.IBienImmobilierService;
+import fr.adaming.service.IBienLocationService;
 import fr.adaming.service.IClasseStandardService;
 import fr.adaming.service.IPhotoService;
 
@@ -31,14 +33,27 @@ public class BienImmobilierRest {
 	@Autowired
 	private IBienImmobilierService biService;
 	@Autowired
-	private IClasseStandardService clService;
+	private IBienAchatService baService;
 	@Autowired
-	private IPhotoService phService;
+	private IBienLocationService blService;
+	@Autowired
+	private IClasseStandardService clService;
 
 	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
 	public List<BienImmobilier> findAll() {
 		return biService.getAll();
 	}
+	
+	@RequestMapping(value = "/listeAchat", method = RequestMethod.GET, produces = "application/json")
+	public List<BienAchat> findAllAchat() {
+		return baService.getAll();
+	}
+
+	@RequestMapping(value = "/listeLocation", method = RequestMethod.GET, produces = "application/json")
+	public List<BienLocation> findAllLocation() {
+		return blService.getAll();
+	}
+
 
 	@RequestMapping(value = "/rechercheClassStandard", method = RequestMethod.GET, produces = "application/json")
 	public List<BienImmobilier> getBienImmobilierByClassStandard(@RequestParam("pId") int id) {
