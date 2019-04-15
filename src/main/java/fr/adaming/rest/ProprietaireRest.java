@@ -3,6 +3,7 @@ package fr.adaming.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import fr.adaming.service.IPropritaireService;
 
 @RestController
 @RequestMapping("/proprietaire")
+@CrossOrigin(origins="http://localhost:4200")
 public class ProprietaireRest {
 
 	//transformation de l'association uml en Java
