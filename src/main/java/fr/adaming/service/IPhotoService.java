@@ -2,6 +2,7 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.Photo;
 
 public interface IPhotoService {
@@ -17,5 +18,7 @@ public interface IPhotoService {
 	public void suppr(final Photo ph);
 
 	public void supprById(final int id);
+	
+	public List<Photo> recPhotoParBienImmo(BienImmobilier bimmo);
 
 }

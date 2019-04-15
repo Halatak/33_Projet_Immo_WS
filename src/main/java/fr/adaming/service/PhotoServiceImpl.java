@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.dao.IPhotoDao;
+import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.Photo;
 
 @Service("photoService")
@@ -52,6 +53,11 @@ public class PhotoServiceImpl implements IPhotoService{
 	@Override
 	public void supprById(int id) {
 		phoDao.supprById(id);
+	}
+
+	@Override
+	public List<Photo> recPhotoParBienImmo(BienImmobilier bimmo) {
+		return phoDao.recPhotoParBienImmo(bimmo);
 	}
 
 }

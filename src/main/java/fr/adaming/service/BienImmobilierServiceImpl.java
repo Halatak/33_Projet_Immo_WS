@@ -1,5 +1,6 @@
 package fr.adaming.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import fr.adaming.dao.IBienImmobilierDao;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
+import fr.adaming.model.Photo;
 import fr.adaming.model.Proprietaire;
 
 @Service("bienImmobilierService")

@@ -5,6 +5,7 @@ import java.util.List;
 import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
+import fr.adaming.model.Photo;
 import fr.adaming.model.Proprietaire;
 
 public interface IBienImmobilierService {

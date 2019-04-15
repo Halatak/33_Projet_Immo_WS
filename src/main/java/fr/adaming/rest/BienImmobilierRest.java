@@ -16,9 +16,11 @@ import fr.adaming.model.BienImmobilier;
 import fr.adaming.model.BienLocation;
 import fr.adaming.model.ClasseStandard;
 import fr.adaming.model.Client;
+import fr.adaming.model.Photo;
 import fr.adaming.model.Proprietaire;
 import fr.adaming.service.IBienImmobilierService;
 import fr.adaming.service.IClasseStandardService;
+import fr.adaming.service.IPhotoService;
 
 @RestController
 @RequestMapping("/bienImmobilier")
@@ -30,6 +32,8 @@ public class BienImmobilierRest {
 	private IBienImmobilierService biService;
 	@Autowired
 	private IClasseStandardService clService;
+	@Autowired
+	private IPhotoService phService;
 
 	@RequestMapping(value = "/liste", method = RequestMethod.GET, produces = "application/json")
 	public List<BienImmobilier> findAll() {
