@@ -50,17 +50,18 @@ public class BienImmobilierServiceImpl implements IBienImmobilierService{
 	@Override
 	public BienImmobilier ajout(BienImmobilier bi) {
 		// récupérer les photos et les ajouter à la db
-//		for (int i=0; i<bi.getListePhoto().size(); i++){
-//			// recup du string de la photo de json
-//			String phIn = bi.getListePhoto().get(i).getPhoto();
-//			Photo photoIn = new Photo();
-//			//conversion de la photo e byte
-//			photoIn.setImg(Base64.getDecoder().decode(phIn));
-//			//lier la photo au bien
-//			photoIn.setBienImmo(bi);
-//			//ajout de la photo dans la bd
-//			phDao.ajout(photoIn);
-//		}		
+		System.out.println("*************************"+bi.getListePhoto());
+		for (int i=0; i<bi.getListePhoto().size(); i++){
+			// recup du string de la photo de json
+			String phIn = bi.getListePhoto().get(i).getPhoto();
+			Photo photoIn = new Photo();
+			//conversion de la photo e byte
+			photoIn.setImg(Base64.getDecoder().decode(phIn));
+			//lier la photo au bien
+			photoIn.setBienImmo(bi);
+			//ajout de la photo dans la bd
+			phDao.ajout(photoIn);
+		}		
 		
 		return bienImmoDao.ajout(bi);
 	}

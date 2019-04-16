@@ -84,6 +84,7 @@ public class BienImmobilierRest {
 
 	@RequestMapping(value = "/ajoutAchat", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public BienImmobilier ajoutBienAchat(@RequestBody BienAchat ba) {
+		System.out.println("*************************"+ba);
 		return biService.ajout(ba);
 	}
 

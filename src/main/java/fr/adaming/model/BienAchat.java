@@ -56,14 +56,19 @@ public class BienAchat extends BienImmobilier implements Serializable {
 		this.etat = etat;
 	}
 
-	// To String
+
 	@Override
 	public String toString() {
-		return "BienAchat [prix=" + prix + ", etat=" + etat + ", id=" + id + ", statut=" + statut + ", dateSoumission="
-				+ dateSoumission + ", dateDispo=" + dateDispo + ", revenu=" + revenu + ", coordonneePersAgence="
-				+ coordonneePersAgence + ", nombreChambres=" + nombreChambres + "]";
+		return super.toString();
 	}
 
+
+
+
+
+	
+
+	
 
 
 

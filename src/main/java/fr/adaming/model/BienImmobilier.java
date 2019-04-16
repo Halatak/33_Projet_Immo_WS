@@ -209,9 +209,6 @@ public class BienImmobilier implements Serializable {
 	public void setNombreChambres(int nombreChambres) {
 		this.nombreChambres = nombreChambres;
 	}
-
-	
-	
 	
 	public String getLatitude() {
 		return latitude;
@@ -237,14 +234,16 @@ public class BienImmobilier implements Serializable {
 		this.adresse = adresse;
 	}
 
-	// To String
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumission=" + dateSoumission + ", dateDispo="
 				+ dateDispo + ", revenu=" + revenu + ", coordonneePersAgence=" + coordonneePersAgence
 				+ ", nombreChambres=" + nombreChambres + ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", adresse=" + adresse + ", proprietaire=" + proprietaire + "]";
+				+ ", adresse=" + adresse + ", classeStandard=" + classeStandard + ", proprietaire=" + proprietaire
+				+ ", visite=" + visite + ", listePhoto=" + listePhoto + "]";
 	}
+
+
 
 
 
