@@ -63,11 +63,11 @@ public class Client implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<ClasseStandard> listeClasseStandard;
 
-	@ManyToMany(mappedBy = "listeClient",targetEntity=BienImmobilier.class)
+	/*@ManyToMany(mappedBy = "listeClient",targetEntity=BienImmobilier.class)
 	@JsonIgnoreProperties("listeClient")
 	//@JsonBackReference
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<BienImmobilier> listeBienImmobilier;
+	private List<BienImmobilier> listeBienImmobilier;*/
 
 	@OneToOne(mappedBy = "client")
 	@JsonIgnoreProperties("client")
@@ -181,13 +181,6 @@ public class Client implements Serializable {
 		this.listeClasseStandard = listeClasseStandard;
 	}
 
-	public List<BienImmobilier> getListeBienImmobilier() {
-		return listeBienImmobilier;
-	}
-
-	public void setListeBienImmobilier(List<BienImmobilier> listeBienImmobilier) {
-		this.listeBienImmobilier = listeBienImmobilier;
-	}
 
 	// To String
 	@Override

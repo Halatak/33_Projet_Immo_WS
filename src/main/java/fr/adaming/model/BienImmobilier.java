@@ -70,12 +70,12 @@ public class BienImmobilier implements Serializable {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Proprietaire proprietaire;
 
-	@ManyToMany(targetEntity = Client.class)
+	/*@ManyToMany(targetEntity = Client.class)
 	@JoinTable(name = "tab_assoc2", joinColumns = @JoinColumn(name = "bimmo_id"), inverseJoinColumns = @JoinColumn(name = "cl_id"))
 	@JsonIgnoreProperties("listeBienImmobilier")
 	//@JsonManagedReference
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Client> listeClient;
+	private List<Client> listeClient;*/
 
 	@OneToOne(mappedBy = "bienImmobilier")
 	@JsonIgnoreProperties("bienImmobilier")
@@ -210,13 +210,6 @@ public class BienImmobilier implements Serializable {
 		this.nombreChambres = nombreChambres;
 	}
 
-	public List<Client> getListeClient() {
-		return listeClient;
-	}
-
-	public void setListeClient(List<Client> listeClient) {
-		this.listeClient = listeClient;
-	}
 	
 	
 	
