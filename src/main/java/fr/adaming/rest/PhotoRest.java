@@ -1,5 +1,7 @@
 package fr.adaming.rest;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +35,11 @@ public class PhotoRest {
 	}
 
 	@RequestMapping(value="/ajout", method=RequestMethod.POST, produces="application/json", consumes="application/json")
-	public Photo ajoutPhoto(@RequestBody Photo ph) {
+	public Photo ajoutPhoto(@RequestBody Photo ph) throws UnsupportedEncodingException {
+		// encodage de la photo en base64
+		String phIn = ph.getPhoto();
+		ph.setImg(Base64.getDecoder().decode(phIn));
+		System.out.println(ph);
 		return phService.ajout(ph);
 	}
 
